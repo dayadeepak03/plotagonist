@@ -12,12 +12,17 @@ class AppTheme {
   static const Color subTitleTextColor = Color(0xFF9F988F);
   //static const Color appColor = Color(0xff205b3e);
   static const Color appBarColor = Color(0xffF7F7F7);
+  static const Color clippathColor = Color(0xffFAFAFA);
+  static const Color selectIndex = Color(0xffE4FEE3);
   static const Color appBarCoin = Color(0xffE28424);
   static const Color floatingColor = Color(0xffED8A19);
   static const Color notifyColor = Color(0xffC74C4D);
   static const Color txtColor = Color(0xff4C4C4C);
   static const Color txtappBar = Color(0xff007AFF);
   static const Color txthint = Color(0xff25A2F0);
+  static const Color fcolor = Color(0xff1877F1);
+  static const Color tcolor = Color(0xff1CA1F1);
+  static const Color fback = Color(0xffF2F2F2);
   static const Color appColor2 = Color(0xffF1A20D);
   static const Color appColor3 = Color(0xffD7E5D4);
   static const Color appColor4 = Color(0xff5F7A6D);

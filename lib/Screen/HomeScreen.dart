@@ -29,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
         },
       ),
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(SizeConfig.heightMultiplier * 12),
+        preferredSize: Size.fromHeight(SizeConfig.heightMultiplier * 10),
         child: AppBar(
           backgroundColor: AppTheme.appBarColor,
           brightness: Brightness.light,
