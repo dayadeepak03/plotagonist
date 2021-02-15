@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:plotagonist/Screen/send_invites.dart';
 import 'package:plotagonist/Utils/size_config.dart';
 import 'package:plotagonist/Utils/styling.dart';
 
@@ -169,6 +170,10 @@ class _PlotSummaryState extends State<PlotSummary> {
                             labelStyle: TextStyle(
                                 color: AppTheme.appBarCoin, fontSize: 20.0),
                             fillColor: AppTheme.appBarCoin,
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide:
+                                  BorderSide(color: AppTheme.appBarCoin),
+                            ),
                           ),
                         ),
                       ],
@@ -177,10 +182,13 @@ class _PlotSummaryState extends State<PlotSummary> {
                 ],
               ),
               GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (_) => SendInvites()));
+                },
                 child: Container(
                   padding:
-                      EdgeInsets.symmetric(horizontal: 30.0, vertical: 10.0),
+                      EdgeInsets.symmetric(horizontal: 20.0, vertical: 7.0),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(5.0)),
                       color: AppTheme.appBarCoin,
