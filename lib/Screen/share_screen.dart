@@ -14,7 +14,7 @@ class _ShareScreenState extends State<ShareScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppTheme.appBackgroundColor,
       body: SafeArea(
         top: true,
         child: Column(
@@ -77,7 +77,7 @@ class _ShareScreenState extends State<ShareScreen> {
                       RaisedButton(
                         onPressed: () {},
                         elevation: 0,
-                        color: AppTheme.fback,
+                        color: Colors.white,
                         child: Row(
                           children: [
                             Icon(
@@ -100,7 +100,7 @@ class _ShareScreenState extends State<ShareScreen> {
                       RaisedButton(
                         onPressed: () {},
                         elevation: 0,
-                        color: AppTheme.fback,
+                        color: Colors.white,
                         child: Row(
                           children: [
                             Icon(

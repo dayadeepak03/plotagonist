@@ -4,7 +4,7 @@ import 'package:plotagonist/Utils/size_config.dart';
 class AppTheme {
   AppTheme._();
 
-  static const Color appBackgroundColor = Color(0xff3153EB);
+  static const Color appBackgroundColor = Color(0xffF2F2F2);
   static const Color appBackgroundColor2 = Color(0xff6629F4);
   static const Color topBarBackgroundColor = Color(0xFFFFD974);
   static const Color selectedTabBackgroundColor = Color(0xFFFFC442);

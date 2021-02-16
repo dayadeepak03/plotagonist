@@ -370,7 +370,11 @@ showAlertDialog(BuildContext context) {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text('Read Only'),
+                                Text(
+                                  'Read only',
+                                  style: TextStyle(
+                                      fontSize: 17.0, color: AppTheme.txtColor),
+                                ),
                                 CupertinoSwitch(
                                     value: isRead,
                                     onChanged: (bool val) {
@@ -381,12 +385,16 @@ showAlertDialog(BuildContext context) {
                               ],
                             ),
                             SizedBox(
-                              height: SizeConfig.heightMultiplier * 1,
+                              height: SizeConfig.heightMultiplier * 3,
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text('Can Comment'),
+                                Text(
+                                  'Can Comment',
+                                  style: TextStyle(
+                                      fontSize: 17.0, color: AppTheme.txtColor),
+                                ),
                                 CupertinoSwitch(
                                     value: isComment,
                                     onChanged: (bool val) {
@@ -397,12 +405,16 @@ showAlertDialog(BuildContext context) {
                               ],
                             ),
                             SizedBox(
-                              height: SizeConfig.heightMultiplier * 1,
+                              height: SizeConfig.heightMultiplier * 3,
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text('Can create entries'),
+                                Text(
+                                  'Can create entries',
+                                  style: TextStyle(
+                                      fontSize: 17.0, color: AppTheme.txtColor),
+                                ),
                                 CupertinoSwitch(
                                     value: isCreate,
                                     onChanged: (bool val) {
@@ -413,12 +425,16 @@ showAlertDialog(BuildContext context) {
                               ],
                             ),
                             SizedBox(
-                              height: SizeConfig.heightMultiplier * 1,
+                              height: SizeConfig.heightMultiplier * 3,
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text('Can edit entries'),
+                                Text(
+                                  'Can edit entries',
+                                  style: TextStyle(
+                                      fontSize: 17.0, color: AppTheme.txtColor),
+                                ),
                                 CupertinoSwitch(
                                     value: isEdit,
                                     onChanged: (bool val) {
@@ -429,12 +445,16 @@ showAlertDialog(BuildContext context) {
                               ],
                             ),
                             SizedBox(
-                              height: SizeConfig.heightMultiplier * 1,
+                              height: SizeConfig.heightMultiplier * 3,
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text('Can delete entries'),
+                                Text(
+                                  'Can delete entries',
+                                  style: TextStyle(
+                                      fontSize: 17.0, color: AppTheme.txtColor),
+                                ),
                                 CupertinoSwitch(
                                     value: isDelete,
                                     onChanged: (bool val) {

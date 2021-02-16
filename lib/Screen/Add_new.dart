@@ -1,10 +1,14 @@
 import 'dart:math';
-
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
+import 'package:plotagonist/Screen/allocate_media.dart';
 import 'package:plotagonist/Utils/size_config.dart';
 import 'package:plotagonist/Utils/styling.dart';
+import 'package:quill_delta/quill_delta.dart';
+import 'package:textfield_tags/textfield_tags.dart';
+import 'package:zefyr/zefyr.dart';
 
 class AddNew extends StatefulWidget {
   @override
@@ -12,6 +16,26 @@ class AddNew extends StatefulWidget {
 }
 
 class _AddNewState extends State<AddNew> {
+  TextEditingController ctrl;
+  List<String> users = ['Naveen ', 'Ram', 'Satish', 'Some Other'], words = [];
+  String str = '';
+  List<String> coments = [];
+  Color color = AppTheme.txtColor;
+
+  @override
+  void initState() {
+    super.initState();
+    ctrl = TextEditingController();
+  }
+
+  showProfile(String s) {
+    showDialog(
+        context: context,
+        builder: (con) => AlertDialog(
+            title: Text('Profile of $s'),
+            content: Text('Show the user profile !')));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +61,9 @@ class _AddNewState extends State<AddNew> {
                       ),
                       actions: [
                         CupertinoActionSheetAction(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
                             child: Text(
                               'Camera',
                               style: TextStyle(
@@ -46,7 +72,9 @@ class _AddNewState extends State<AddNew> {
                                   fontWeight: FontWeight.bold),
                             )),
                         CupertinoActionSheetAction(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
                             child: Text(
                               'Media Library',
                               style: TextStyle(
@@ -55,7 +83,9 @@ class _AddNewState extends State<AddNew> {
                                   fontWeight: FontWeight.bold),
                             )),
                         CupertinoActionSheetAction(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
                             child: Text(
                               'Files',
                               style: TextStyle(
@@ -64,7 +94,9 @@ class _AddNewState extends State<AddNew> {
                                   fontWeight: FontWeight.bold),
                             )),
                         CupertinoActionSheetAction(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
                             child: Text(
                               'Unsplash Photos',
                               style: TextStyle(
@@ -73,7 +105,9 @@ class _AddNewState extends State<AddNew> {
                                   fontWeight: FontWeight.bold),
                             )),
                         CupertinoActionSheetAction(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
                             child: Text(
                               'Cancel',
                               style: TextStyle(
@@ -120,8 +154,8 @@ class _AddNewState extends State<AddNew> {
         ),
         trailing: GestureDetector(
           onTap: () {
-            /*Navigator.push(
-                context, MaterialPageRoute(builder: (_) => ShareScreen()));*/
+            Navigator.push(
+                context, MaterialPageRoute(builder: (_) => AllocateMedia()));
           },
           child: Padding(
             padding: EdgeInsets.only(
@@ -129,7 +163,7 @@ class _AddNewState extends State<AddNew> {
               bottom: SizeConfig.heightMultiplier * 0.5,
             ),
             child: Text(
-              'Skip',
+              'Save',
               style: TextStyle(color: AppTheme.txtappBar, fontSize: 18.0),
             ),
           ),
@@ -229,9 +263,10 @@ class _AddNewState extends State<AddNew> {
                     left: SizeConfig.heightMultiplier * 2,
                     right: SizeConfig.heightMultiplier * 2),
                 child: TextFormField(
+                  controller: ctrl,
                   autofocus: true,
-                  maxLines: 20,
-                  style: TextStyle(fontSize: 14.0),
+                  maxLines: 2,
+                  style: TextStyle(color: color),
                   decoration: new InputDecoration(
                     contentPadding: const EdgeInsets.symmetric(
                         vertical: 10.0, horizontal: 0.0),
@@ -246,6 +281,29 @@ class _AddNewState extends State<AddNew> {
                   ),
                   onEditingComplete: () {
                     FocusScope.of(context).requestFocus();
+                  },
+                  onChanged: (val) {
+                    setState(() {
+                      words = val.split(' ');
+                      str = words.length > 0 &&
+                              words[words.length - 1].startsWith('@')
+                          ? words[words.length - 1]
+                          : '';
+
+                      print(val.toString());
+                      print(users[0].toString());
+                      if (val.toString() == users[0]) {
+                        setState(() {
+                          print('yes');
+                          color = AppTheme.appBarCoin;
+                        });
+                      } else {
+                        setState(() {
+                          print('No');
+                          color = AppTheme.txtColor;
+                        });
+                      }
+                    });
                   },
                 ),
               ),

@@ -37,6 +37,10 @@ dependencies:
   font_awesome_flutter: ^8.11.0
   flutter_custom_clippers: ^1.1.2
   convex_bottom_bar: ^2.6.0
+  zefyr:
+  quill_delta: ^2.0.0
+  extended_text_field: ^5.0.4
+  textfield_tags: ^1.1.0+1
 
 dev_dependencies:
   flutter_test:
