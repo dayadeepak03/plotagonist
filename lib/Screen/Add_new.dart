@@ -134,19 +134,18 @@ class _AddNewState extends State<AddNew> {
       ),
       backgroundColor: Colors.white,
       appBar: CupertinoNavigationBar(
-        leading: Padding(
-          padding: EdgeInsets.only(
-              left: SizeConfig.heightMultiplier * 0.5,
-              top: SizeConfig.heightMultiplier * 1),
-          child: GestureDetector(
-            onTap: () {
-              Navigator.pop(context);
-            },
-            child: Text(
-              'Cancel',
-              style: TextStyle(color: AppTheme.txtappBar, fontSize: 18.0),
+        leading: Row(
+          children: [
+            GestureDetector(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Text(
+                'Cancel',
+                style: TextStyle(color: AppTheme.txtappBar, fontSize: 18.0),
+              ),
             ),
-          ),
+          ],
         ),
         middle: Text(
           'Add New',
@@ -157,15 +156,9 @@ class _AddNewState extends State<AddNew> {
             Navigator.push(
                 context, MaterialPageRoute(builder: (_) => AllocateMedia()));
           },
-          child: Padding(
-            padding: EdgeInsets.only(
-              right: SizeConfig.heightMultiplier * 0.5,
-              bottom: SizeConfig.heightMultiplier * 0.5,
-            ),
-            child: Text(
-              'Save',
-              style: TextStyle(color: AppTheme.txtappBar, fontSize: 18.0),
-            ),
+          child: Text(
+            'Save',
+            style: TextStyle(color: AppTheme.txtappBar, fontSize: 18.0),
           ),
         ),
       ),

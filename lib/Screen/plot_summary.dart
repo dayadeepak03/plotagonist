@@ -16,19 +16,18 @@ class _PlotSummaryState extends State<PlotSummary> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: CupertinoNavigationBar(
-        leading: Padding(
-          padding: EdgeInsets.only(
-              left: SizeConfig.heightMultiplier * 0.5,
-              top: SizeConfig.heightMultiplier * 1),
-          child: GestureDetector(
-            onTap: () {
-              Navigator.pop(context);
-            },
-            child: Text(
-              'Cancel',
-              style: TextStyle(color: AppTheme.txtappBar, fontSize: 18.0),
+        leading: Row(
+          children: [
+            GestureDetector(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Text(
+                'Cancel',
+                style: TextStyle(color: AppTheme.txtappBar, fontSize: 18.0),
+              ),
             ),
-          ),
+          ],
         ),
         middle: Text(
           'Plot Summary',
@@ -36,18 +35,12 @@ class _PlotSummaryState extends State<PlotSummary> {
         ),
         trailing: GestureDetector(
           onTap: () {
-            /*Navigator.push(
-                context, MaterialPageRoute(builder: (_) => ShareScreen()));*/
+            Navigator.push(
+                context, MaterialPageRoute(builder: (_) => SendInvites()));
           },
-          child: Padding(
-            padding: EdgeInsets.only(
-              right: SizeConfig.heightMultiplier * 0.5,
-              bottom: SizeConfig.heightMultiplier * 0.5,
-            ),
-            child: Text(
-              'Skip',
-              style: TextStyle(color: AppTheme.txtappBar, fontSize: 18.0),
-            ),
+          child: Text(
+            'Skip',
+            style: TextStyle(color: AppTheme.txtappBar, fontSize: 18.0),
           ),
         ),
       ),
@@ -74,11 +67,19 @@ class _PlotSummaryState extends State<PlotSummary> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(left: 50.0, right: 20.0, top: 10.0),
+                    margin: EdgeInsets.only(
+                        left: SizeConfig.heightMultiplier * 4,
+                        right: SizeConfig.heightMultiplier * 2,
+                        top: SizeConfig.heightMultiplier * 1.2),
+                    padding: EdgeInsets.only(
+                        left: SizeConfig.heightMultiplier * 1.8,
+                        bottom: SizeConfig.heightMultiplier * 0.5),
                     child: ClipPath(
                       clipper: CustomClipPath(),
                       child: Container(
-                        height: SizeConfig.heightMultiplier * 25,
+                        padding: EdgeInsets.all(
+                          SizeConfig.heightMultiplier * 1,
+                        ),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(5.0),
                           boxShadow: [
@@ -120,7 +121,7 @@ class _PlotSummaryState extends State<PlotSummary> {
                                   'Please try to summarise what your story is about. It’s important to have the core of your story early on, '
                                   'so you never lose track of your North Star. Think about it like the short summary at the back of the books you have read.',
                                   style: GoogleFonts.lora(
-                                      fontSize: 14.0, color: AppTheme.txtColor),
+                                      fontSize: 12.0, color: AppTheme.txtColor),
                                 ),
                               ),
                             ),
@@ -147,39 +148,40 @@ class _PlotSummaryState extends State<PlotSummary> {
                       ),
                     ),
                   ),
-                  Container(
-                    margin: EdgeInsets.only(
-                        top: SizeConfig.heightMultiplier * 16,
-                        left: 20.0,
-                        right: 20.0,
-                        bottom: 20.0),
-                    child: Column(
-                      children: [
-                        TextFormField(
-                          keyboardType: TextInputType.multiline,
-                          maxLines: 8,
-                          autofocus: true,
-                          style: TextStyle(fontSize: 20.0),
-                          decoration: new InputDecoration(
-                            contentPadding: const EdgeInsets.symmetric(
-                                vertical: 20.0, horizontal: 0.0),
-                            hintText: 'Please enter story summary',
-                            hintStyle:
-                                TextStyle(color: Colors.grey, fontSize: 16.0),
-                            labelText: 'Story Summary',
-                            labelStyle: TextStyle(
-                                color: AppTheme.appBarCoin, fontSize: 20.0),
-                            fillColor: AppTheme.appBarCoin,
-                            focusedBorder: UnderlineInputBorder(
-                              borderSide:
-                                  BorderSide(color: AppTheme.appBarCoin),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
                 ],
+              ),
+              Container(
+                margin: EdgeInsets.only(
+                  top: SizeConfig.heightMultiplier * 0.5,
+                  left: SizeConfig.heightMultiplier * 2,
+                  right: SizeConfig.heightMultiplier * 2,
+                  bottom: SizeConfig.heightMultiplier * 2,
+                ),
+                child: Column(
+                  children: [
+                    TextFormField(
+                      keyboardType: TextInputType.multiline,
+                      maxLines: 8,
+                      autofocus: true,
+                      style: TextStyle(fontSize: 20.0),
+                      decoration: new InputDecoration(
+                        contentPadding: EdgeInsets.symmetric(
+                            vertical: SizeConfig.heightMultiplier * 2,
+                            horizontal: 0.0),
+                        hintText: 'Please enter story summary',
+                        hintStyle:
+                            TextStyle(color: Colors.grey, fontSize: 16.0),
+                        labelText: 'Story Summary',
+                        labelStyle: TextStyle(
+                            color: AppTheme.appBarCoin, fontSize: 20.0),
+                        fillColor: AppTheme.appBarCoin,
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: AppTheme.appBarCoin),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
               GestureDetector(
                 onTap: () {
@@ -187,8 +189,12 @@ class _PlotSummaryState extends State<PlotSummary> {
                       MaterialPageRoute(builder: (_) => SendInvites()));
                 },
                 child: Container(
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 20.0, vertical: 7.0),
+                  padding: EdgeInsets.symmetric(
+                      horizontal: SizeConfig.heightMultiplier * 2,
+                      vertical: SizeConfig.heightMultiplier * 0.7),
+                  margin: EdgeInsets.only(
+                    bottom: SizeConfig.heightMultiplier * 2,
+                  ),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(5.0)),
                       color: AppTheme.appBarCoin,
@@ -212,19 +218,20 @@ class CustomClipPath extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     final double width = size.width;
-    final double height = size.height / 1.8;
-    final double startMargin = width / 18;
+    final double height = size.height;
+    final double startMargin = width / 15;
 
-    final double s1 = height * 0.3;
-    final double s2 = height * 0.2;
+    final double s1 = height * 0.2;
+    final double s2 = height * 0.1;
     final Path path = Path()
       ..addRRect(RRect.fromRectAndRadius(
-          Rect.fromLTWH(startMargin, 0, width - startMargin, height),
-          const Radius.circular(0)))
+          Rect.fromLTWH(startMargin, 0.2, width - startMargin, height),
+          const Radius.circular(6)))
       ..lineTo(startMargin, s1)
-      ..lineTo(10.0, size.height / 7)
+      ..lineTo(6.0, size.height / 8)
       ..lineTo(startMargin, s2)
       ..close();
+
     return path;
   }
 

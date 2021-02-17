@@ -41,33 +41,26 @@ class _BookAuthorTitleState extends State<BookAuthorTitle> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: CupertinoNavigationBar(
-        leading: Padding(
-          padding: EdgeInsets.only(
-              left: SizeConfig.heightMultiplier * 0.5,
-              top: SizeConfig.heightMultiplier * 1),
-          child: GestureDetector(
-            onTap: () {
-              Navigator.pop(context);
-            },
-            child: Text(
-              'Cancel',
-              style: TextStyle(color: AppTheme.txtappBar, fontSize: 18.0),
+        leading: Row(
+          children: [
+            GestureDetector(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Text(
+                'Cancel',
+                style: TextStyle(color: AppTheme.txtappBar, fontSize: 18.0),
+              ),
             ),
-          ),
+          ],
         ),
         middle: Text(
           'Create new Plot',
           style: TextStyle(color: Colors.black, fontSize: 18.0),
         ),
-        trailing: Padding(
-          padding: EdgeInsets.only(
-            right: SizeConfig.heightMultiplier * 0.5,
-            bottom: SizeConfig.heightMultiplier * 0.5,
-          ),
-          child: Text(
-            'Save',
-            style: TextStyle(color: AppTheme.txtappBar, fontSize: 18.0),
-          ),
+        trailing: Text(
+          'Save',
+          style: TextStyle(color: AppTheme.txtappBar, fontSize: 18.0),
         ),
       ),
       resizeToAvoidBottomInset: false,

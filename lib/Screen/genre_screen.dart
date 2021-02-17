@@ -30,19 +30,18 @@ class _GenreScreenState extends State<GenreScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: CupertinoNavigationBar(
-        leading: Padding(
-          padding: EdgeInsets.only(
-              left: SizeConfig.heightMultiplier * 0.5,
-              top: SizeConfig.heightMultiplier * 1),
-          child: GestureDetector(
-            onTap: () {
-              Navigator.pop(context);
-            },
-            child: Text(
-              'Cancel',
-              style: TextStyle(color: AppTheme.txtappBar, fontSize: 18.0),
+        leading: Row(
+          children: [
+            GestureDetector(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Text(
+                'Cancel',
+                style: TextStyle(color: AppTheme.txtappBar, fontSize: 18.0),
+              ),
             ),
-          ),
+          ],
         ),
         middle: Text(
           'Choose Genre',
@@ -53,15 +52,9 @@ class _GenreScreenState extends State<GenreScreen> {
             Navigator.push(
                 context, MaterialPageRoute(builder: (_) => SubGenreScreen()));
           },
-          child: Padding(
-            padding: EdgeInsets.only(
-              right: SizeConfig.heightMultiplier * 0.5,
-              bottom: SizeConfig.heightMultiplier * 0.5,
-            ),
-            child: Text(
-              'Skip',
-              style: TextStyle(color: AppTheme.txtappBar, fontSize: 18.0),
-            ),
+          child: Text(
+            'Skip',
+            style: TextStyle(color: AppTheme.txtappBar, fontSize: 18.0),
           ),
         ),
       ),
@@ -88,23 +81,29 @@ class _GenreScreenState extends State<GenreScreen> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(left: 50.0, right: 20.0, top: 10.0),
+                    margin: EdgeInsets.only(
+                        left: SizeConfig.heightMultiplier * 4,
+                        right: SizeConfig.heightMultiplier * 2,
+                        top: SizeConfig.heightMultiplier * 1.2),
+                    padding: EdgeInsets.only(
+                        left: SizeConfig.heightMultiplier * 1.8,
+                        bottom: SizeConfig.heightMultiplier * 0.5),
                     child: ClipPath(
                       clipper: CustomClipPath(),
                       child: Container(
-                        height: SizeConfig.heightMultiplier * 15,
+                        padding: EdgeInsets.all(
+                          SizeConfig.heightMultiplier * 1,
+                        ),
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5.0),
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.black,
                               blurRadius: 10.0,
-                              spreadRadius: 5.0,
+                              spreadRadius: 10.0,
                               offset: Offset(
                                   8.0, 8.0), // shadow direction: bottom right
                             )
                           ],
-                          color: AppTheme.appBarColor,
+                          color: AppTheme.clippathColor,
                         ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -133,7 +132,7 @@ class _GenreScreenState extends State<GenreScreen> {
                                 child: Text(
                                   'Please select one, so I can customise your experience. Click NEXT when you are done.',
                                   style: GoogleFonts.lora(
-                                      fontSize: 14.0, color: AppTheme.txtColor),
+                                      fontSize: 12.0, color: AppTheme.txtColor),
                                 ),
                               ),
                             ),
@@ -160,57 +159,56 @@ class _GenreScreenState extends State<GenreScreen> {
                       ),
                     ),
                   ),
-                  Container(
-                    margin: EdgeInsets.only(top: 100.0),
-                    child: ListView.builder(
-                      shrinkWrap: true,
-                      physics: BouncingScrollPhysics(),
-                      scrollDirection: Axis.vertical,
-                      itemCount: genreList.length,
-                      itemBuilder: (context, index) {
-                        GenreModels genre = genreList[index];
-                        return Container(
-                          margin: EdgeInsets.symmetric(
-                              vertical: 5.0, horizontal: 20.0),
-                          padding: EdgeInsets.only(top: 15.0, bottom: 15.0),
-                          decoration: BoxDecoration(
-                              color: _selectedIndex == index
-                                  ? AppTheme.selectIndex
-                                  : AppTheme.clippathColor,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(5.0))),
-                          width: MediaQuery.of(context).size.width,
-                          child: ListTile(
-                            leading: Container(
-                              margin: EdgeInsets.only(
-                                left: SizeConfig.heightMultiplier * 1,
-                              ),
-                              child: ClipOval(
-                                child: Image(
-                                  image: AssetImage(genre.img),
-                                  height: 62,
-                                  width: 62,
-                                  fit: BoxFit.fill,
-                                ),
-                              ),
-                            ),
-                            title: Text(
-                              genre.genreName,
-                              style: TextStyle(
-                                  fontSize: 14.0, color: AppTheme.txtColor),
-                            ),
-                            selected: index == _selectedIndex,
-                            onTap: () {
-                              setState(() {
-                                _selectedIndex = index;
-                              });
-                            },
-                          ),
-                        );
-                      },
-                    ),
-                  ),
                 ],
+              ),
+              Container(
+                margin: EdgeInsets.only(top: SizeConfig.heightMultiplier * 1),
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  physics: BouncingScrollPhysics(),
+                  scrollDirection: Axis.vertical,
+                  itemCount: genreList.length,
+                  itemBuilder: (context, index) {
+                    GenreModels genre = genreList[index];
+                    return Container(
+                      margin:
+                          EdgeInsets.symmetric(vertical: 5.0, horizontal: 20.0),
+                      padding: EdgeInsets.only(top: 15.0, bottom: 15.0),
+                      decoration: BoxDecoration(
+                          color: _selectedIndex == index
+                              ? AppTheme.selectIndex
+                              : AppTheme.clippathColor,
+                          borderRadius: BorderRadius.all(Radius.circular(5.0))),
+                      width: MediaQuery.of(context).size.width,
+                      child: ListTile(
+                        leading: Container(
+                          margin: EdgeInsets.only(
+                            left: SizeConfig.heightMultiplier * 1,
+                          ),
+                          child: ClipOval(
+                            child: Image(
+                              image: AssetImage(genre.img),
+                              height: 62,
+                              width: 62,
+                              fit: BoxFit.fill,
+                            ),
+                          ),
+                        ),
+                        title: Text(
+                          genre.genreName,
+                          style: TextStyle(
+                              fontSize: 14.0, color: AppTheme.txtColor),
+                        ),
+                        selected: index == _selectedIndex,
+                        onTap: () {
+                          setState(() {
+                            _selectedIndex = index;
+                          });
+                        },
+                      ),
+                    );
+                  },
+                ),
               ),
               GestureDetector(
                 onTap: () {
@@ -224,8 +222,12 @@ class _GenreScreenState extends State<GenreScreen> {
                   }
                 },
                 child: Container(
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 50.0, vertical: 10.0),
+                  margin: EdgeInsets.only(
+                      top: SizeConfig.heightMultiplier * 3,
+                      bottom: SizeConfig.heightMultiplier * 5),
+                  padding: EdgeInsets.symmetric(
+                      horizontal: SizeConfig.heightMultiplier * 5,
+                      vertical: SizeConfig.heightMultiplier * 1),
                   decoration: BoxDecoration(
                       color: _selectedIndex >= 0
                           ? AppTheme.appBarCoin
@@ -251,19 +253,20 @@ class CustomClipPath extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     final double width = size.width;
-    final double height = size.height / 1.8;
+    final double height = size.height;
     final double startMargin = width / 18;
 
     final double s1 = height * 0.3;
     final double s2 = height * 0.2;
     final Path path = Path()
       ..addRRect(RRect.fromRectAndRadius(
-          Rect.fromLTWH(startMargin, 0, width - startMargin, height),
-          const Radius.circular(0)))
+          Rect.fromLTWH(startMargin, 0.2, width - startMargin, height),
+          const Radius.circular(6)))
       ..lineTo(startMargin, s1)
-      ..lineTo(10.0, size.height / 7)
+      ..lineTo(6.0, size.height / 4)
       ..lineTo(startMargin, s2)
       ..close();
+
     return path;
   }
 

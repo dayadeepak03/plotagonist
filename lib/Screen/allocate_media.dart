@@ -19,19 +19,18 @@ class _AllocateMediaState extends State<AllocateMedia> {
     return Scaffold(
       backgroundColor: AppTheme.clippathColor,
       appBar: CupertinoNavigationBar(
-        leading: Padding(
-          padding: EdgeInsets.only(
-              left: SizeConfig.heightMultiplier * 0.5,
-              top: SizeConfig.heightMultiplier * 1),
-          child: GestureDetector(
-            onTap: () {
-              Navigator.pop(context);
-            },
-            child: Text(
-              'Cancel',
-              style: TextStyle(color: AppTheme.txtappBar, fontSize: 18.0),
+        leading: Row(
+          children: [
+            GestureDetector(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Text(
+                'Cancel',
+                style: TextStyle(color: AppTheme.txtappBar, fontSize: 18.0),
+              ),
             ),
-          ),
+          ],
         ),
         middle: Text(
           'Allocate Media 1/1',
@@ -42,15 +41,9 @@ class _AllocateMediaState extends State<AllocateMedia> {
             /*Navigator.push(
                 context, MaterialPageRoute(builder: (_) => ShareScreen()));*/
           },
-          child: Padding(
-            padding: EdgeInsets.only(
-              right: SizeConfig.heightMultiplier * 0.5,
-              bottom: SizeConfig.heightMultiplier * 0.5,
-            ),
-            child: Text(
-              'Next',
-              style: TextStyle(color: AppTheme.txtappBar, fontSize: 18.0),
-            ),
+          child: Text(
+            'Next',
+            style: TextStyle(color: AppTheme.txtappBar, fontSize: 18.0),
           ),
         ),
       ),
@@ -146,18 +139,17 @@ class _AllocateMediaState extends State<AllocateMedia> {
                     top: SizeConfig.heightMultiplier * 1,
                     left: SizeConfig.heightMultiplier * 3,
                     right: SizeConfig.heightMultiplier * 3),
-                height: SizeConfig.heightMultiplier * 3.8,
                 child: TextFormField(
-                  autofocus: false,
                   decoration: new InputDecoration(
+                    isDense: true,
                     filled: true,
                     fillColor: AppTheme.appBackgroundColor,
-                    contentPadding: EdgeInsets.only(
-                        left: SizeConfig.heightMultiplier * 1.5),
+                    contentPadding: EdgeInsets.all(8),
                     border: InputBorder.none,
                     hintText: 'Search Cards',
                     enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                      borderRadius: BorderRadius.all(
+                          Radius.circular(SizeConfig.heightMultiplier * 0.5)),
                       borderSide:
                           BorderSide(color: Colors.transparent, width: 0),
                     ),
@@ -167,7 +159,7 @@ class _AllocateMediaState extends State<AllocateMedia> {
                       },
                       child: Container(
                         margin:
-                            EdgeInsets.all(SizeConfig.heightMultiplier * 0.4),
+                            EdgeInsets.all(SizeConfig.heightMultiplier * 1.5),
                         decoration: BoxDecoration(
                             shape: BoxShape.circle, color: AppTheme.appBarCoin),
                         child: Icon(

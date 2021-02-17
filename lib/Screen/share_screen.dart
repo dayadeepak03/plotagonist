@@ -14,7 +14,7 @@ class _ShareScreenState extends State<ShareScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppTheme.appBackgroundColor,
+      backgroundColor: Colors.white,
       body: SafeArea(
         top: true,
         child: Column(
@@ -40,6 +40,9 @@ class _ShareScreenState extends State<ShareScreen> {
               padding: EdgeInsets.only(top: SizeConfig.heightMultiplier * 1),
               child: Image(
                 image: AssetImage('assets/images/5.png'),
+                height: MediaQuery.of(context).size.height / 2.2,
+                width: MediaQuery.of(context).size.width,
+                fit: BoxFit.fill,
               ),
             ),
             Container(
@@ -77,7 +80,7 @@ class _ShareScreenState extends State<ShareScreen> {
                       RaisedButton(
                         onPressed: () {},
                         elevation: 0,
-                        color: Colors.white,
+                        color: AppTheme.fback,
                         child: Row(
                           children: [
                             Icon(
@@ -100,7 +103,7 @@ class _ShareScreenState extends State<ShareScreen> {
                       RaisedButton(
                         onPressed: () {},
                         elevation: 0,
-                        color: Colors.white,
+                        color: AppTheme.fback,
                         child: Row(
                           children: [
                             Icon(
@@ -148,7 +151,10 @@ class _ShareScreenState extends State<ShareScreen> {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (_) => GenreScreen()));
                       },
-                      child: Text('Not now'))
+                      child: Text(
+                        'Not now',
+                        style: TextStyle(fontStyle: FontStyle.italic),
+                      ))
                 ],
               ),
             ),

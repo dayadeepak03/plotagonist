@@ -61,7 +61,7 @@ class _TipPageViewState extends State<TipPageView> {
             },
           ),
           Padding(
-            padding: EdgeInsets.only(top: SizeConfig.heightMultiplier * 2),
+            padding: EdgeInsets.only(top: SizeConfig.heightMultiplier * 4),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
@@ -72,8 +72,10 @@ class _TipPageViewState extends State<TipPageView> {
                           duration: Duration(milliseconds: 300),
                           height: 10,
                           width: 10,
-                          margin:
-                              EdgeInsets.symmetric(horizontal: 5, vertical: 30),
+                          margin: EdgeInsets.only(
+                              left: SizeConfig.heightMultiplier * 0.5,
+                              right: SizeConfig.heightMultiplier * 0.5,
+                              top: SizeConfig.heightMultiplier * 3.2),
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(5),
                               color: (index == _currentPage)
@@ -81,7 +83,7 @@ class _TipPageViewState extends State<TipPageView> {
                                   : Colors.grey.withOpacity(0.5)));
                     })),
                 SizedBox(
-                  height: SizeConfig.heightMultiplier * 5,
+                  height: SizeConfig.heightMultiplier * 3,
                 ),
               ],
             ),
@@ -128,7 +130,7 @@ class _TipPageViewState extends State<TipPageView> {
                 ],
               ),
               SizedBox(
-                height: SizeConfig.heightMultiplier * 5,
+                height: SizeConfig.heightMultiplier * 4,
               ),
             ],
           )

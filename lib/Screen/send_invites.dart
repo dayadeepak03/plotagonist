@@ -25,19 +25,18 @@ class _SendInvitesState extends State<SendInvites> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: CupertinoNavigationBar(
-        leading: Padding(
-          padding: EdgeInsets.only(
-              left: SizeConfig.heightMultiplier * 0.5,
-              top: SizeConfig.heightMultiplier * 1),
-          child: GestureDetector(
-            onTap: () {
-              Navigator.pop(context);
-            },
-            child: Text(
-              'Cancel',
-              style: TextStyle(color: AppTheme.txtappBar, fontSize: 18.0),
+        leading: Row(
+          children: [
+            GestureDetector(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Text(
+                'Cancel',
+                style: TextStyle(color: AppTheme.txtappBar, fontSize: 18.0),
+              ),
             ),
-          ),
+          ],
         ),
         middle: Text(
           'Send Invites',
@@ -48,15 +47,9 @@ class _SendInvitesState extends State<SendInvites> {
             /*Navigator.push(
                 context, MaterialPageRoute(builder: (_) => ShareScreen()));*/
           },
-          child: Padding(
-            padding: EdgeInsets.only(
-              right: SizeConfig.heightMultiplier * 0.5,
-              bottom: SizeConfig.heightMultiplier * 0.5,
-            ),
-            child: Text(
-              'Skip',
-              style: TextStyle(color: AppTheme.txtappBar, fontSize: 18.0),
-            ),
+          child: Text(
+            'Skip',
+            style: TextStyle(color: AppTheme.txtappBar, fontSize: 18.0),
           ),
         ),
       ),
@@ -83,11 +76,19 @@ class _SendInvitesState extends State<SendInvites> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(left: 50.0, right: 20.0, top: 10.0),
+                    margin: EdgeInsets.only(
+                        left: SizeConfig.heightMultiplier * 4,
+                        right: SizeConfig.heightMultiplier * 2,
+                        top: SizeConfig.heightMultiplier * 1.2),
+                    padding: EdgeInsets.only(
+                        left: SizeConfig.heightMultiplier * 1.8,
+                        bottom: SizeConfig.heightMultiplier * 0.5),
                     child: ClipPath(
                       clipper: CustomClipPath(),
                       child: Container(
-                        height: SizeConfig.heightMultiplier * 25,
+                        padding: EdgeInsets.all(
+                          SizeConfig.heightMultiplier * 1,
+                        ),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(5.0),
                           boxShadow: [
@@ -132,7 +133,7 @@ class _SendInvitesState extends State<SendInvites> {
                                   'actively edit your story, or your fans, friends or family to help you with ideas via comments.',
                                   style: GoogleFonts.lora(
                                       wordSpacing: 2,
-                                      fontSize: 14.0,
+                                      fontSize: 12.0,
                                       color: AppTheme.txtColor),
                                 ),
                               ),
@@ -160,102 +161,102 @@ class _SendInvitesState extends State<SendInvites> {
                       ),
                     ),
                   ),
-                  ListView.builder(
-                    shrinkWrap: true,
-                    physics: BouncingScrollPhysics(),
-                    scrollDirection: Axis.vertical,
-                    itemCount: listLength,
-                    itemBuilder: (context, index) {
-                      return Container(
-                        margin: EdgeInsets.only(
-                            top: index == 0
-                                ? SizeConfig.heightMultiplier * 16
-                                : SizeConfig.heightMultiplier * 0,
-                            left: 20.0,
-                            right: 20.0,
-                            bottom: index == listLength - 1
-                                ? SizeConfig.heightMultiplier * 2
-                                : SizeConfig.heightMultiplier * 0.5),
-                        child: Column(
-                          children: [
-                            TextFormField(
-                              autofocus: true,
-                              style: TextStyle(fontSize: 14.0),
-                              decoration: new InputDecoration(
-                                contentPadding: const EdgeInsets.symmetric(
-                                    vertical: 10.0, horizontal: 0.0),
-                                hintText: 'e.g. Stephen King',
-                                hintStyle: TextStyle(
-                                    color: Colors.grey, fontSize: 16.0),
-                                labelText: 'THEIR NAME',
-                                labelStyle: TextStyle(
-                                    color: AppTheme.appBarCoin, fontSize: 12.0),
-                                fillColor: AppTheme.appBarCoin,
-                                focusedBorder: UnderlineInputBorder(
-                                  borderSide:
-                                      BorderSide(color: AppTheme.appBarCoin),
-                                ),
-                              ),
-                              onEditingComplete: () {
-                                FocusScope.of(context).nextFocus();
-                              },
-                            ),
-                            TextFormField(
-                              style: TextStyle(fontSize: 14.0),
-                              decoration: new InputDecoration(
-                                contentPadding: const EdgeInsets.symmetric(
-                                    vertical: 10.0, horizontal: 0.0),
-                                hintText: 'e.g. they@theiremail.com',
-                                hintStyle: TextStyle(
-                                    color: Colors.grey, fontSize: 16.0),
-                                labelText: 'THEIR EMAIL',
-                                labelStyle: TextStyle(
-                                    color: AppTheme.appBarCoin, fontSize: 12.0),
-                                fillColor: AppTheme.appBarCoin,
-                                focusedBorder: UnderlineInputBorder(
-                                  borderSide:
-                                      BorderSide(color: AppTheme.appBarCoin),
-                                ),
-                              ),
-                              onEditingComplete: () {
-                                FocusScope.of(context).nextFocus();
-                              },
-                            ),
-                            TextFormField(
-                              style: TextStyle(fontSize: 14.0),
-                              decoration: new InputDecoration(
-                                contentPadding: const EdgeInsets.symmetric(
-                                    vertical: 10.0, horizontal: 0.0),
-                                hintText: 'Co-Author',
-                                hintStyle: TextStyle(
-                                    color: Colors.grey, fontSize: 16.0),
-                                labelText: 'THEIR ROLE',
-                                labelStyle: TextStyle(
-                                    color: AppTheme.appBarCoin, fontSize: 12.0),
-                                fillColor: AppTheme.appBarCoin,
-                                focusedBorder: UnderlineInputBorder(
-                                  borderSide:
-                                      BorderSide(color: AppTheme.appBarCoin),
-                                ),
-                              ),
-                              onEditingComplete: () {
-                                FocusScope.of(context).nextFocus();
-                              },
-                            ),
-                            SizedBox(
-                              height: SizeConfig.heightMultiplier * 1.5,
-                            ),
-                            GestureDetector(
-                                onTap: () {
-                                  showAlertDialog(context);
-                                },
-                                child: Text('Edit Permissions')),
-                          ],
-                        ),
-                      );
-                    },
-                  ),
                 ],
+              ),
+              ListView.builder(
+                shrinkWrap: true,
+                physics: BouncingScrollPhysics(),
+                scrollDirection: Axis.vertical,
+                itemCount: listLength,
+                itemBuilder: (context, index) {
+                  return Container(
+                    margin: EdgeInsets.only(
+                        top: index == 0
+                            ? SizeConfig.heightMultiplier * 1
+                            : SizeConfig.heightMultiplier * 0,
+                        left: 20.0,
+                        right: 20.0,
+                        bottom: index == listLength - 1
+                            ? SizeConfig.heightMultiplier * 2
+                            : SizeConfig.heightMultiplier * 0.5),
+                    child: Column(
+                      children: [
+                        TextFormField(
+                          autofocus: true,
+                          style: TextStyle(fontSize: 14.0),
+                          decoration: new InputDecoration(
+                            contentPadding: const EdgeInsets.symmetric(
+                                vertical: 10.0, horizontal: 0.0),
+                            hintText: 'e.g. Stephen King',
+                            hintStyle:
+                                TextStyle(color: Colors.grey, fontSize: 16.0),
+                            labelText: 'THEIR NAME',
+                            labelStyle: TextStyle(
+                                color: AppTheme.appBarCoin, fontSize: 12.0),
+                            fillColor: AppTheme.appBarCoin,
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide:
+                                  BorderSide(color: AppTheme.appBarCoin),
+                            ),
+                          ),
+                          onEditingComplete: () {
+                            FocusScope.of(context).nextFocus();
+                          },
+                        ),
+                        TextFormField(
+                          style: TextStyle(fontSize: 14.0),
+                          decoration: new InputDecoration(
+                            contentPadding: const EdgeInsets.symmetric(
+                                vertical: 10.0, horizontal: 0.0),
+                            hintText: 'e.g. they@theiremail.com',
+                            hintStyle:
+                                TextStyle(color: Colors.grey, fontSize: 16.0),
+                            labelText: 'THEIR EMAIL',
+                            labelStyle: TextStyle(
+                                color: AppTheme.appBarCoin, fontSize: 12.0),
+                            fillColor: AppTheme.appBarCoin,
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide:
+                                  BorderSide(color: AppTheme.appBarCoin),
+                            ),
+                          ),
+                          onEditingComplete: () {
+                            FocusScope.of(context).nextFocus();
+                          },
+                        ),
+                        TextFormField(
+                          style: TextStyle(fontSize: 14.0),
+                          decoration: new InputDecoration(
+                            contentPadding: const EdgeInsets.symmetric(
+                                vertical: 10.0, horizontal: 0.0),
+                            hintText: 'Co-Author',
+                            hintStyle:
+                                TextStyle(color: Colors.grey, fontSize: 16.0),
+                            labelText: 'THEIR ROLE',
+                            labelStyle: TextStyle(
+                                color: AppTheme.appBarCoin, fontSize: 12.0),
+                            fillColor: AppTheme.appBarCoin,
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide:
+                                  BorderSide(color: AppTheme.appBarCoin),
+                            ),
+                          ),
+                          onEditingComplete: () {
+                            FocusScope.of(context).nextFocus();
+                          },
+                        ),
+                        SizedBox(
+                          height: SizeConfig.heightMultiplier * 1.5,
+                        ),
+                        GestureDetector(
+                            onTap: () {
+                              showAlertDialog(context);
+                            },
+                            child: Text('Edit Permissions')),
+                      ],
+                    ),
+                  );
+                },
               ),
               Container(
                 margin:
@@ -317,19 +318,20 @@ class CustomClipPath extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     final double width = size.width;
-    final double height = size.height / 1.8;
-    final double startMargin = width / 18;
+    final double height = size.height;
+    final double startMargin = width / 15;
 
-    final double s1 = height * 0.3;
-    final double s2 = height * 0.2;
+    final double s1 = height * 0.2;
+    final double s2 = height * 0.1;
     final Path path = Path()
       ..addRRect(RRect.fromRectAndRadius(
-          Rect.fromLTWH(startMargin, 0, width - startMargin, height),
-          const Radius.circular(0)))
+          Rect.fromLTWH(startMargin, 0.2, width - startMargin, height),
+          const Radius.circular(6)))
       ..lineTo(startMargin, s1)
-      ..lineTo(10.0, size.height / 7)
+      ..lineTo(6.0, size.height / 8)
       ..lineTo(startMargin, s2)
       ..close();
+
     return path;
   }
 
