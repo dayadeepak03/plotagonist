@@ -34,6 +34,29 @@ class _SubGenreScreenState extends State<SubGenreScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      floatingActionButton: Container(
+        height: 30.0,
+        child: FloatingActionButton.extended(
+          backgroundColor:
+              _selectedIndex >= 0 ? AppTheme.appBarCoin : Colors.transparent,
+          elevation: 0,
+          onPressed: () {
+            if (_selectedIndex >= 0) {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (_) => PlotSummary()));
+            }
+          },
+          label: Text(
+            'NEXT STEP',
+            style: TextStyle(
+                color: _selectedIndex >= 0 ? Colors.white : Colors.grey,
+                fontWeight: FontWeight.bold),
+          ),
+          shape: RoundedRectangleBorder(
+              side: BorderSide(color: AppTheme.appBarCoin, width: 1.0)),
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       appBar: CupertinoNavigationBar(
         leading: Row(
           children: [
@@ -167,81 +190,58 @@ class _SubGenreScreenState extends State<SubGenreScreen> {
                   ),
                 ],
               ),
-              Container(
-                margin: EdgeInsets.only(top: SizeConfig.heightMultiplier * 1),
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  physics: BouncingScrollPhysics(),
-                  scrollDirection: Axis.vertical,
-                  itemCount: subGenreList.length,
-                  itemBuilder: (context, index) {
-                    SubGenreModels subgenre = subGenreList[index];
-                    return Container(
-                      margin:
-                          EdgeInsets.symmetric(vertical: 5.0, horizontal: 20.0),
-                      padding: EdgeInsets.only(top: 15.0, bottom: 15.0),
-                      decoration: BoxDecoration(
-                          color: _selectedIndex == index
-                              ? AppTheme.selectIndex
-                              : AppTheme.clippathColor,
-                          borderRadius: BorderRadius.all(Radius.circular(5.0))),
-                      width: MediaQuery.of(context).size.width,
-                      child: ListTile(
-                        leading: Container(
-                          margin: EdgeInsets.only(
-                            left: SizeConfig.heightMultiplier * 1,
-                          ),
-                          child: ClipOval(
-                            child: Image(
-                              image: AssetImage(subgenre.img),
-                              height: 62,
-                              width: 62,
-                              fit: BoxFit.fill,
+              Stack(
+                children: [
+                  Container(
+                    margin: EdgeInsets.only(
+                        top: SizeConfig.heightMultiplier * 1,
+                        bottom: SizeConfig.heightMultiplier * 3),
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      physics: BouncingScrollPhysics(),
+                      scrollDirection: Axis.vertical,
+                      itemCount: subGenreList.length,
+                      itemBuilder: (context, index) {
+                        SubGenreModels subgenre = subGenreList[index];
+                        return Container(
+                          margin: EdgeInsets.symmetric(
+                              vertical: 5.0, horizontal: 20.0),
+                          padding: EdgeInsets.only(top: 15.0, bottom: 15.0),
+                          decoration: BoxDecoration(
+                              color: _selectedIndex == index
+                                  ? AppTheme.selectIndex
+                                  : AppTheme.clippathColor,
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(5.0))),
+                          width: MediaQuery.of(context).size.width,
+                          child: ListTile(
+                            leading: Container(
+                              child: ClipOval(
+                                child: Image(
+                                  image: AssetImage(subgenre.img),
+                                  height: 62,
+                                  width: 57,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
                             ),
+                            title: Text(
+                              subgenre.subgenreName.toUpperCase(),
+                              style: TextStyle(
+                                  fontSize: 14.0, color: AppTheme.txtColor),
+                            ),
+                            selected: index == _selectedIndex,
+                            onTap: () {
+                              setState(() {
+                                _selectedIndex = index;
+                              });
+                            },
                           ),
-                        ),
-                        title: Text(
-                          subgenre.subgenreName.toUpperCase(),
-                          style: TextStyle(
-                              fontSize: 14.0, color: AppTheme.txtColor),
-                        ),
-                        selected: index == _selectedIndex,
-                        onTap: () {
-                          setState(() {
-                            _selectedIndex = index;
-                          });
-                        },
-                      ),
-                    );
-                  },
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  if (_selectedIndex >= 0) {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (_) => PlotSummary()));
-                  }
-                },
-                child: Container(
-                  margin: EdgeInsets.only(
-                      top: SizeConfig.heightMultiplier * 3,
-                      bottom: SizeConfig.heightMultiplier * 5),
-                  padding: EdgeInsets.symmetric(
-                      horizontal: SizeConfig.heightMultiplier * 5,
-                      vertical: SizeConfig.heightMultiplier * 1),
-                  decoration: BoxDecoration(
-                      color: _selectedIndex >= 0
-                          ? AppTheme.appBarCoin
-                          : Colors.transparent,
-                      border: Border.all(color: AppTheme.appBarCoin)),
-                  child: Text(
-                    'NEXT STEP',
-                    style: TextStyle(
-                        color: _selectedIndex >= 0 ? Colors.white : Colors.grey,
-                        fontWeight: FontWeight.bold),
+                        );
+                      },
+                    ),
                   ),
-                ),
+                ],
               ),
             ],
           )

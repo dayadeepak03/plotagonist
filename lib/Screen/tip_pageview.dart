@@ -108,22 +108,25 @@ class _TipPageViewState extends State<TipPageView> {
                     child: AnimatedContainer(
                         alignment: Alignment.center,
                         padding: EdgeInsets.only(
-                            left: 30, right: 30, top: 5, bottom: 5),
+                            left: SizeConfig.heightMultiplier * 3.2,
+                            right: SizeConfig.heightMultiplier * 3.2,
+                            top: SizeConfig.heightMultiplier * 0.7,
+                            bottom: SizeConfig.heightMultiplier * 0.7),
                         duration: Duration(milliseconds: 300),
-                        color: AppTheme.appBarCoin,
+                        color: AppTheme.floatingColor,
                         child: (_currentPage == (_pages.length - 1))
                             ? Text(
                                 "START WRITING",
                                 style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: 20,
+                                  fontSize: SizeConfig.textMultiplier * 2.3,
                                 ),
                               )
                             : Text(
                                 "NEXT TIP",
                                 style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: 20,
+                                  fontSize: SizeConfig.textMultiplier * 2.3,
                                 ),
                               )),
                   ),

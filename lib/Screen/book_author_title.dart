@@ -55,7 +55,7 @@ class _BookAuthorTitleState extends State<BookAuthorTitle> {
           ],
         ),
         middle: Text(
-          'Create new Plot',
+          'Create New Plot',
           style: TextStyle(color: Colors.black, fontSize: 18.0),
         ),
         trailing: Text(

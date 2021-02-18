@@ -56,7 +56,7 @@ class SliderPage extends StatelessWidget {
                 description,
                 style: GoogleFonts.lora(
                   height: 1.4,
-                  fontSize: 14,
+                  fontSize: SizeConfig.textMultiplier * 1.7,
                 ),
               ),
               SizedBox(

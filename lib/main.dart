@@ -1,9 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:plotagonist/Screen/Add_new.dart';
 import 'package:plotagonist/Screen/HomeScreen.dart';
-import 'package:plotagonist/Screen/allocate_media.dart';
-import 'package:plotagonist/Screen/send_invites.dart';
 import 'package:plotagonist/Utils/styling.dart';
 
 import 'Utils/size_config.dart';

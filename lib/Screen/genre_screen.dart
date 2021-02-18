@@ -29,6 +29,33 @@ class _GenreScreenState extends State<GenreScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      floatingActionButton: Container(
+        height: SizeConfig.heightMultiplier * 4.5,
+        child: FloatingActionButton.extended(
+          backgroundColor:
+              _selectedIndex >= 0 ? AppTheme.appBarCoin : Colors.transparent,
+          elevation: 0,
+          onPressed: () {
+            if (_selectedIndex >= 0) {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (_) => SubGenreScreen(
+                            genre: genreList[_selectedIndex].genreName,
+                          )));
+            }
+          },
+          label: Text(
+            'NEXT STEP',
+            style: TextStyle(
+                color: _selectedIndex >= 0 ? Colors.white : Colors.grey,
+                fontWeight: FontWeight.bold),
+          ),
+          shape: RoundedRectangleBorder(
+              side: BorderSide(color: AppTheme.appBarCoin, width: 1.0)),
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       appBar: CupertinoNavigationBar(
         leading: Row(
           children: [
@@ -171,9 +198,12 @@ class _GenreScreenState extends State<GenreScreen> {
                   itemBuilder: (context, index) {
                     GenreModels genre = genreList[index];
                     return Container(
-                      margin:
-                          EdgeInsets.symmetric(vertical: 5.0, horizontal: 20.0),
-                      padding: EdgeInsets.only(top: 15.0, bottom: 15.0),
+                      margin: EdgeInsets.symmetric(
+                          vertical: SizeConfig.heightMultiplier * 0.5,
+                          horizontal: SizeConfig.heightMultiplier * 2),
+                      padding: EdgeInsets.only(
+                          top: SizeConfig.heightMultiplier * 1,
+                          bottom: SizeConfig.heightMultiplier * 1),
                       decoration: BoxDecoration(
                           color: _selectedIndex == index
                               ? AppTheme.selectIndex
@@ -181,17 +211,12 @@ class _GenreScreenState extends State<GenreScreen> {
                           borderRadius: BorderRadius.all(Radius.circular(5.0))),
                       width: MediaQuery.of(context).size.width,
                       child: ListTile(
-                        leading: Container(
-                          margin: EdgeInsets.only(
-                            left: SizeConfig.heightMultiplier * 1,
-                          ),
-                          child: ClipOval(
-                            child: Image(
-                              image: AssetImage(genre.img),
-                              height: 62,
-                              width: 62,
-                              fit: BoxFit.fill,
-                            ),
+                        leading: ClipOval(
+                          child: Image(
+                            image: AssetImage(genre.img),
+                            height: 62,
+                            width: 57,
+                            fit: BoxFit.cover,
                           ),
                         ),
                         title: Text(
@@ -208,37 +233,6 @@ class _GenreScreenState extends State<GenreScreen> {
                       ),
                     );
                   },
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  if (_selectedIndex >= 0) {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (_) => SubGenreScreen(
-                                  genre: genreList[_selectedIndex].genreName,
-                                )));
-                  }
-                },
-                child: Container(
-                  margin: EdgeInsets.only(
-                      top: SizeConfig.heightMultiplier * 3,
-                      bottom: SizeConfig.heightMultiplier * 5),
-                  padding: EdgeInsets.symmetric(
-                      horizontal: SizeConfig.heightMultiplier * 5,
-                      vertical: SizeConfig.heightMultiplier * 1),
-                  decoration: BoxDecoration(
-                      color: _selectedIndex >= 0
-                          ? AppTheme.appBarCoin
-                          : Colors.transparent,
-                      border: Border.all(color: AppTheme.appBarCoin)),
-                  child: Text(
-                    'NEXT STEP',
-                    style: TextStyle(
-                        color: _selectedIndex >= 0 ? Colors.white : Colors.grey,
-                        fontWeight: FontWeight.bold),
-                  ),
                 ),
               ),
             ],
