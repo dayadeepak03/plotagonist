@@ -1,11 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:plotagonist/Models/genre_model.dart';
 import 'package:plotagonist/Models/sub_genre_model.dart';
 import 'package:plotagonist/Screen/plot_summary.dart';
-import 'package:plotagonist/Screen/share_screen.dart';
 import 'package:plotagonist/Utils/size_config.dart';
 import 'package:plotagonist/Utils/styling.dart';
 

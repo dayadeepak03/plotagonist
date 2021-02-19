@@ -32,15 +32,11 @@ dependencies:
   badges: ^1.1.6
   google_fonts: ^1.1.2
   auto_size_text_field: ^0.1.7
-  flutter_spinkit: ^4.1.2+1
   modal_progress_hud: ^0.1.3
   font_awesome_flutter: ^8.11.0
-  flutter_custom_clippers: ^1.1.2
   convex_bottom_bar: ^2.6.0
-  zefyr:
-  quill_delta: ^2.0.0
-  extended_text_field: ^5.0.4
-  textfield_tags: ^1.1.0+1
+  flutter_screenutil: ^4.0.3+1
+
 
 dev_dependencies:
   flutter_test:

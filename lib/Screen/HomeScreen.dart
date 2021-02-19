@@ -2,7 +2,8 @@ import 'package:badges/badges.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_screenutil/screen_util.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:plotagonist/Screen/book_author_title.dart';
 import 'package:plotagonist/Utils/size_config.dart';
@@ -22,6 +23,9 @@ class _HomeScreenState extends State<HomeScreen> {
           backgroundColor: AppTheme.floatingColor,
           child: Image(
             image: AssetImage('assets/images/plus.png'),
+            height: 43.h,
+            width: 43.w,
+            fit: BoxFit.cover,
           ),
           onPressed: () {
             Navigator.push(
@@ -37,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Column(
               children: [
                 Container(
-                  padding: EdgeInsets.all(SizeConfig.heightMultiplier * 1),
+                  padding: EdgeInsets.only(top: ScreenUtil().setWidth(4)),
                   width: MediaQuery.of(context).size.width,
                   color: AppTheme.appBackgroundColor,
                   child: Column(
@@ -48,8 +52,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           Row(
                             children: [
                               Container(
-                                padding: EdgeInsets.all(
-                                  SizeConfig.heightMultiplier * 1,
+                                padding: EdgeInsets.only(
+                                  left: ScreenUtil().setWidth(15),
                                 ),
                                 child: Row(
                                   children: [
@@ -58,55 +62,49 @@ class _HomeScreenState extends State<HomeScreen> {
                                           AssetImage('assets/images/menu.png'),
                                     ),
                                     SizedBox(
-                                      width: SizeConfig.heightMultiplier * 2,
+                                      width: ScreenUtil().setWidth(18),
                                     ),
                                     Image(
                                       image: AssetImage(
                                           'assets/images/search.png'),
                                     ),
-                                    SizedBox(
-                                      width: SizeConfig.heightMultiplier * 2,
-                                    ),
                                   ],
                                 ),
                               )
                             ],
                           ),
-                          Row(
-                            children: [
-                              Container(
-                                padding: EdgeInsets.all(
-                                  SizeConfig.heightMultiplier * 1,
-                                ),
-                                child: Row(
-                                  children: [
-                                    Image(
-                                      image:
-                                          AssetImage('assets/images/logo.png'),
-                                    ),
-                                  ],
-                                ),
-                              )
-                            ],
+                          Container(
+                            child: Image(
+                              image: AssetImage('assets/images/logo.png'),
+                              height: 32,
+                              width: 32,
+                              fit: BoxFit.cover,
+                            ),
                           ),
                           Row(
                             children: [
                               Container(
-                                padding: EdgeInsets.all(
-                                  SizeConfig.heightMultiplier * 1,
+                                padding: EdgeInsets.only(
+                                  right: ScreenUtil().setWidth(15),
                                 ),
                                 child: Row(
                                   children: [
                                     Image(
                                       image:
                                           AssetImage('assets/images/money.png'),
+                                      height: 11,
+                                      width: 11,
+                                      fit: BoxFit.cover,
                                     ),
                                     SizedBox(
-                                      width: SizeConfig.heightMultiplier * 0.5,
+                                      width: ScreenUtil().setWidth(2),
                                     ),
-                                    Text('100'),
+                                    Text(
+                                      '100',
+                                      style: GoogleFonts.lato(fontSize: 13.sp),
+                                    ),
                                     SizedBox(
-                                      width: SizeConfig.heightMultiplier * 1,
+                                      width: ScreenUtil().setWidth(4),
                                     ),
                                     Image(
                                       image: AssetImage(
@@ -125,96 +123,82 @@ class _HomeScreenState extends State<HomeScreen> {
                 Container(
                   color: AppTheme.appBackgroundColor,
                   padding: EdgeInsets.only(
-                    bottom: SizeConfig.heightMultiplier * 1,
+                    top: 16.h,
+                    bottom: 10.h,
                   ),
+                  margin: EdgeInsets.only(left: 17.w),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Flexible(
-                        flex: 2,
-                        child: Container(
-                          padding: EdgeInsets.fromLTRB(
-                              SizeConfig.heightMultiplier * 1.3,
-                              SizeConfig.heightMultiplier * 0.5,
-                              SizeConfig.heightMultiplier * 1.3,
-                              SizeConfig.heightMultiplier * 0.5),
-                          decoration: BoxDecoration(
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey,
-                                  offset: Offset(0.0, 1.0), //(x,y)
-                                  blurRadius: 2.0,
-                                ),
-                              ],
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(15.0)),
-                              color: Colors.white),
+                      Container(
+                        padding: EdgeInsets.symmetric(
+                            vertical: 6.h, horizontal: 10.h),
+                        decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey,
+                                offset: Offset(0.0, 1.0), //(x,y)
+                                blurRadius: 2.0,
+                              ),
+                            ],
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(15.0)),
+                            color: Colors.white),
+                        child: Text(
+                          'YOUR PLOTS',
+                          style: GoogleFonts.lato(
+                            color: AppTheme.floatingColor,
+                            fontSize: 12.nsp,
+                          ),
+                        ),
+                      ),
+                      Container(
+                        padding: EdgeInsets.fromLTRB(10.w, 6.h, 16.w, 6.h),
+                        margin: EdgeInsets.only(left: 11.w),
+                        decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey,
+                                offset: Offset(0.0, 1.0), //(x,y)
+                                blurRadius: 2.0,
+                              ),
+                            ],
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(12.0)),
+                            color: Colors.white),
+                        child: Badge(
+                          padding: EdgeInsets.all(4.0),
+                          badgeContent: Text(''),
+                          badgeColor: AppTheme.notifyColor,
                           child: Text(
-                            'YOUR PLOTS',
-                            style: TextStyle(
-                                color: AppTheme.floatingColor, fontSize: 12.0),
+                            'WRITING PROMPTS',
+                            style: GoogleFonts.lato(
+                                fontSize: 12.nsp, color: AppTheme.txtColor),
                           ),
                         ),
                       ),
-                      Flexible(
-                        flex: 4,
-                        child: Container(
-                          padding: EdgeInsets.fromLTRB(
-                              SizeConfig.heightMultiplier * 1.5,
-                              SizeConfig.heightMultiplier * 0.5,
-                              SizeConfig.heightMultiplier * 2.5,
-                              SizeConfig.heightMultiplier * 0.5),
-                          decoration: BoxDecoration(
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey,
-                                  offset: Offset(0.0, 1.0), //(x,y)
-                                  blurRadius: 2.0,
-                                ),
-                              ],
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(12.0)),
-                              color: Colors.white),
-                          child: Badge(
-                            padding: EdgeInsets.all(4.0),
-                            badgeContent: Text(''),
-                            badgeColor: AppTheme.notifyColor,
-                            child: Text(
-                              'WRITING PROMPTS',
-                              style: TextStyle(
-                                  fontSize: 12.0, color: AppTheme.txtColor),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Flexible(
-                        flex: 2,
-                        child: Container(
-                          padding: EdgeInsets.fromLTRB(
-                              SizeConfig.heightMultiplier * 1.5,
-                              SizeConfig.heightMultiplier * 0.5,
-                              SizeConfig.heightMultiplier * 2.5,
-                              SizeConfig.heightMultiplier * 0.5),
-                          decoration: BoxDecoration(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(12.0)),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey,
-                                  offset: Offset(0.0, 1.0), //(x,y)
-                                  blurRadius: 2.0,
-                                ),
-                              ],
-                              color: Colors.white),
-                          child: Badge(
-                            padding: EdgeInsets.all(4.0),
-                            badgeContent: Text(''),
-                            badgeColor: AppTheme.notifyColor,
-                            child: Text(
-                              'INVITES',
-                              style: TextStyle(
-                                  fontSize: 12.0, color: AppTheme.txtColor),
-                            ),
+                      Container(
+                        padding: EdgeInsets.fromLTRB(11.w, 6.h, 17.w, 6.h),
+                        margin: EdgeInsets.only(left: 11.w, right: 17.w),
+                        decoration: BoxDecoration(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(12.0)),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey,
+                                offset: Offset(0.0, 1.0), //(x,y)
+                                blurRadius: 2.0,
+                              ),
+                            ],
+                            color: Colors.white),
+                        child: Badge(
+                          padding: EdgeInsets.all(4.0),
+                          badgeContent: Text(''),
+                          badgeColor: AppTheme.notifyColor,
+                          child: Text(
+                            'INVITES',
+                            style: GoogleFonts.lato(
+                                fontSize: 12.nsp, color: AppTheme.txtColor),
                           ),
                         ),
                       ),
@@ -224,7 +208,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 Expanded(
                   child: Container(
                     color: Colors.white,
-                    padding: EdgeInsets.all(SizeConfig.heightMultiplier * 0.5),
                     child: ListView.builder(
                       physics: ScrollPhysics(),
                       shrinkWrap: true,
@@ -233,12 +216,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       itemBuilder: (context, index) {
                         return Container(
                           padding: EdgeInsets.only(
-                              left: index == 0
-                                  ? SizeConfig.heightMultiplier * 3
-                                  : SizeConfig.heightMultiplier * 2,
-                              right: index == 4
-                                  ? SizeConfig.heightMultiplier * 3
-                                  : SizeConfig.heightMultiplier * 0.5,
+                              left: index == 0 ? 34.w : 11.w,
+                              right: index == 4 ? 34.w : 1.w,
                               top: SizeConfig.heightMultiplier * 1),
                           child: SingleChildScrollView(
                             child: Column(
@@ -252,8 +231,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                           : index == 2
                                               ? 'Invites'
                                               : '',
-                                  style: GoogleFonts.lora(
-                                      fontSize: 26.0,
+                                  style: GoogleFonts.lato(
+                                      fontSize: 22.nsp,
                                       fontWeight: FontWeight.bold,
                                       color: AppTheme.txtColor),
                                 ),
@@ -272,27 +251,18 @@ class _HomeScreenState extends State<HomeScreen> {
                                         Image(
                                           image: AssetImage(
                                               'assets/images/2.jpeg'),
-                                          height: MediaQuery.of(context)
-                                                  .size
-                                                  .height /
-                                              2.1,
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width /
-                                              1.3,
+                                          height: 400.h,
+                                          width: 300.w,
                                           fit: BoxFit.cover,
                                         ),
                                         Positioned(
-                                          top: SizeConfig.heightMultiplier * 1,
-                                          left: SizeConfig.heightMultiplier * 1,
-                                          bottom:
-                                              SizeConfig.heightMultiplier * 1,
-                                          right:
-                                              SizeConfig.heightMultiplier * 1,
+                                          top: 10.h,
+                                          left: 10.h,
+                                          bottom: 10.h,
+                                          right: 10.h,
                                           child: Container(
-                                            padding: EdgeInsets.all(
-                                                SizeConfig.heightMultiplier *
-                                                    1),
+                                            padding: EdgeInsets.only(
+                                                top: 9.h, left: 12.w),
                                             decoration: BoxDecoration(
                                               border: Border.all(
                                                 color: Color.fromRGBO(
@@ -306,12 +276,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                               children: [
                                                 Text(
                                                   'AUTHOR NAME',
-                                                  style: TextStyle(
-                                                      color: Colors.white,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontSize: 17.0,
-                                                      height: 1),
+                                                  style: GoogleFonts.lato(
+                                                    color: Colors.white,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 16.sp,
+                                                  ),
                                                 ),
                                                 SizedBox(
                                                   height: SizeConfig
@@ -320,11 +289,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 ),
                                                 Text(
                                                   'Book Title',
-                                                  style: TextStyle(
+                                                  style: GoogleFonts.lato(
                                                       color: Colors.white,
                                                       fontWeight:
                                                           FontWeight.bold,
-                                                      fontSize: 32.0,
+                                                      fontSize: 32.sp,
                                                       height: 1),
                                                 ),
                                               ],
@@ -336,8 +305,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsets.only(
-                                      top: SizeConfig.heightMultiplier * 1),
+                                  padding: EdgeInsets.only(top: 9.h),
                                   child: Container(
                                     width:
                                         MediaQuery.of(context).size.width / 1.3,
@@ -346,13 +314,16 @@ class _HomeScreenState extends State<HomeScreen> {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
-                                          'Entries:0',
-                                          style: TextStyle(
-                                              color: AppTheme.txtColor),
+                                          'Entries: 0',
+                                          style: GoogleFonts.lato(
+                                            fontSize: 12.sp,
+                                            color: AppTheme.txtColor,
+                                          ),
                                         ),
                                         Text(
-                                          'Edited:Never',
-                                          style: TextStyle(
+                                          'Edited: Never',
+                                          style: GoogleFonts.lato(
+                                              fontSize: 12.sp,
                                               color: AppTheme.txtColor),
                                         ),
                                       ],
@@ -369,9 +340,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       'Click the orange button, or tap on the author name and the title to edit, then tap on the cover '
                                       'to find a random cover photo based on your title. Tap again to get another photo.',
                                       style: GoogleFonts.lora(
-                                          fontSize:
-                                              SizeConfig.heightMultiplier *
-                                                  1.69,
+                                          fontSize: 14.sp,
                                           color: AppTheme.txtColor),
                                     ),
                                   ),

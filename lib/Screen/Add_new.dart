@@ -1,14 +1,9 @@
 import 'dart:math';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:plotagonist/Screen/allocate_media.dart';
 import 'package:plotagonist/Utils/size_config.dart';
 import 'package:plotagonist/Utils/styling.dart';
-import 'package:quill_delta/quill_delta.dart';
-import 'package:textfield_tags/textfield_tags.dart';
-import 'package:zefyr/zefyr.dart';
 
 class AddNew extends StatefulWidget {
   @override
