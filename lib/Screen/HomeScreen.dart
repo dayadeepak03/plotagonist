@@ -340,8 +340,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                       'Click the orange button, or tap on the author name and the title to edit, then tap on the cover '
                                       'to find a random cover photo based on your title. Tap again to get another photo.',
                                       style: GoogleFonts.lora(
-                                          fontSize: 14.sp,
-                                          color: AppTheme.txtColor),
+                                        fontSize: 13.sp,
+                                        color: AppTheme.txtColor,
+                                        height: 1.5,
+                                      ),
                                     ),
                                   ),
                                 ),

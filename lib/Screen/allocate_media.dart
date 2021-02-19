@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+
 import 'package:plotagonist/Models/media_models.dart';
 import 'package:plotagonist/Screen/start_screen.dart';
 import 'package:plotagonist/Utils/size_config.dart';
@@ -197,14 +197,11 @@ class _AllocateMediaState extends State<AllocateMedia> {
                                     image: AssetImage(modelList.img),
                                     fit: BoxFit.fill,
                                   )
-                                : SvgPicture.string(
-                                    '''<svg width="27" height="21" viewBox="0 0 27 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M24.6645 20.5883H2.86496C1.54142 20.5883 0.529297 19.5762 0.529297 18.2526V2.68155C0.529297 1.35801 1.54142 0.345886 2.86496 0.345886H24.6645C25.988 0.345886 27.0001 1.35801 27.0001 2.68155V18.2526C27.0001 19.5762 25.988 20.5883 24.6645 20.5883ZM2.86496 1.90299C2.39783 1.90299 2.0864 2.21441 2.0864 2.68155V18.2526C2.0864 18.7198 2.39783 19.0312 2.86496 19.0312H24.6645C25.1316 19.0312 25.443 18.7198 25.443 18.2526V2.68155C25.443 2.21441 25.1316 1.90299 24.6645 1.90299H2.86496Z" fill="#979797"/>
-<path d="M17.6577 9.68854C15.9449 9.68854 14.5435 8.28715 14.5435 6.57433C14.5435 4.86151 15.9449 3.46011 17.6577 3.46011C19.3705 3.46011 20.7719 4.86151 20.7719 6.57433C20.7719 8.28715 19.3705 9.68854 17.6577 9.68854ZM17.6577 5.01722C16.8013 5.01722 16.1006 5.71792 16.1006 6.57433C16.1006 7.43074 16.8013 8.13144 17.6577 8.13144C18.5141 8.13144 19.2148 7.43074 19.2148 6.57433C19.2148 5.71792 18.5141 5.01722 17.6577 5.01722Z" fill="#979797"/>
-<path d="M21.7836 20.3547L9.09322 8.44286L1.85267 15.1384L0.762695 14.0484L9.09322 6.26291L22.8736 19.2648L21.7836 20.3547Z" fill="#979797"/>
-<path d="M25.7545 16.462L21.5503 13.0363L18.0468 15.917L17.0347 14.6713L21.5503 11.0121L26.6887 15.2163L25.7545 16.462Z" fill="#979797"/>
-</svg>
-'''),
+                                : Image(
+                                    image: AssetImage(
+                                        'assets/images/image_place.png'),
+                                    fit: BoxFit.fill,
+                                  ),
                           ),
                           title: Text(
                             modelList.title ?? '',

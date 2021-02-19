@@ -2,11 +2,11 @@ import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:plotagonist/Screen/Add_new.dart';
 import 'package:plotagonist/Utils/size_config.dart';
 import 'package:plotagonist/Utils/styling.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class StartScreen extends StatefulWidget {
   final val;
@@ -30,37 +30,32 @@ class _StartScreenState extends State<StartScreen> {
     return Scaffold(
       backgroundColor: AppTheme.clippathColor,
       bottomNavigationBar: ConvexAppBar(
-        height: SizeConfig.heightMultiplier * 7.5,
+        height: SizeConfig.heightMultiplier * 7,
         backgroundColor: Colors.white,
         color: Colors.black,
         style: TabStyle.reactCircle,
-        top: -20,
+        top: -15,
         items: [
           TabItem(
-              icon: SvgPicture.string(
-                  '''<svg width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path opacity="0.640671" fill-rule="evenodd" clip-rule="evenodd" d="M16.4996 0C7.38721 0 0 7.38771 0 16.4997C0 25.6116 7.38721 33 16.4996 33C25.6119 33 33 25.6121 33 16.4997C33 7.38727 25.6119 0 16.4996 0ZM16.5005 25.6246C15.3162 25.6246 14.3556 24.6649 14.3556 23.4797H18.6451C18.6453 24.6649 17.6848 25.6246 16.5005 25.6246ZM23.7478 21.329H23.7484V21.1924C23.7484 20.622 23.4137 20.1345 22.9324 19.9025L22.4768 15.9691C22.4768 13.0897 20.4407 10.6868 17.73 10.12V8.59309C17.73 7.91439 17.1797 7.36406 16.501 7.36406C15.822 7.36406 15.2716 7.91439 15.2716 8.59309V10.1199C12.561 10.6868 10.5249 13.0899 10.5249 15.969L10.0693 19.9019C9.588 20.1335 9.25305 20.6219 9.25305 21.1923V21.3289C9.25305 22.122 9.89524 22.1742 10.6881 22.1742H22.3126C23.1051 22.1742 23.7478 22.122 23.7478 21.3289V21.329Z" fill="black"/>
-</svg>'''),
+              icon: Container(
+                child: Image(
+                  image: AssetImage('assets/images/shap.png'),
+                  fit: BoxFit.contain,
+                ),
+              ),
               title: 'Alerts'),
           TabItem(
               icon: Container(
                 child: Image(
-                  image: AssetImage('assets/images/group2.png'),
-                  fit: BoxFit.cover,
+                  image: AssetImage('assets/images/logo2.png'),
+                  fit: BoxFit.contain,
                 ),
               ),
               title: 'Add New'),
           TabItem(
-              icon: CircleAvatar(
-                backgroundColor: Colors.black,
-                child: ClipOval(
-                  child: Image(
-                    image: AssetImage('assets/images/6.jpeg'),
-                    fit: BoxFit.cover,
-                    width: SizeConfig.heightMultiplier * 9,
-                    height: SizeConfig.heightMultiplier * 9,
-                  ),
-                ),
+              icon: Image(
+                image: AssetImage('assets/images/ellips.png'),
+                fit: BoxFit.contain,
               ),
               title: 'Your Muse'),
         ],
@@ -72,7 +67,7 @@ class _StartScreenState extends State<StartScreen> {
           }
         },
       ),
-      resizeToAvoidBottomPadding: false,
+      resizeToAvoidBottomInset: false,
       body: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.dark.copyWith(
           statusBarColor: AppTheme.appBackgroundColor,

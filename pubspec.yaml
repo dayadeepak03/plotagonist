@@ -28,7 +28,6 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.0
-  flutter_svg: any
   badges: ^1.1.6
   google_fonts: ^1.1.2
   auto_size_text_field: ^0.1.7
@@ -36,6 +35,8 @@ dependencies:
   font_awesome_flutter: ^8.11.0
   convex_bottom_bar: ^2.6.0
   flutter_screenutil: ^4.0.3+1
+  flick_video_player: any
+  video_player: any
 
 
 dev_dependencies:
