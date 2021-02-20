@@ -30,7 +30,6 @@ class _StartScreenState extends State<StartScreen> {
     return Scaffold(
       backgroundColor: AppTheme.clippathColor,
       bottomNavigationBar: ConvexAppBar(
-        height: SizeConfig.heightMultiplier * 7,
         backgroundColor: Colors.white,
         color: Colors.black,
         style: TabStyle.reactCircle,

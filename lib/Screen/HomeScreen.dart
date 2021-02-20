@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/screen_util.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:plotagonist/Models/dashboard_list.dart';
 import 'package:plotagonist/Screen/book_author_title.dart';
 import 'package:plotagonist/Utils/size_config.dart';
 import 'package:plotagonist/Utils/styling.dart';
@@ -39,6 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: SafeArea(
             bottom: false,
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
                   padding: EdgeInsets.only(top: ScreenUtil().setWidth(4)),
@@ -120,85 +122,168 @@ class _HomeScreenState extends State<HomeScreen> {
                     ],
                   ),
                 ),
+                /*Container(
+                    height: 0.042.sh,
+                    margin: EdgeInsets.only(top: 16.h),
+                    child: Column(
+                      children: [
+                        Expanded(
+                          child: ListView.builder(
+                              physics: ScrollPhysics(),
+                              scrollDirection: Axis.horizontal,
+                              shrinkWrap: true,
+                              itemCount: dashboardList.length,
+                              itemBuilder: (context, index) {
+                                return Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Center(
+                                      child: Container(
+                                        padding: EdgeInsets.fromLTRB(15.h, 5.h,
+                                            index == 0 ? 11.h : 17.h, 6.h),
+                                        margin: EdgeInsets.only(
+                                            left: index == 0 ? 17.h : 0,
+                                            right: index ==
+                                                    dashboardList.length - 1
+                                                ? 25.h
+                                                : 15.h),
+                                        decoration: BoxDecoration(
+                                            boxShadow: [
+                                              BoxShadow(
+                                                color: Colors.grey,
+                                                offset:
+                                                    Offset(0.0, 1.0), //(x,y)
+                                                blurRadius: 2.0,
+                                              ),
+                                            ],
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(12.0)),
+                                            color: Colors.white),
+                                        child: index != 0
+                                            ? Badge(
+                                                padding: EdgeInsets.all(4.w),
+                                                badgeContent: Text(''),
+                                                badgeColor:
+                                                    AppTheme.notifyColor,
+                                                child: Text(
+                                                  dashboardList[index]
+                                                      .title
+                                                      .toUpperCase(),
+                                                  style: GoogleFonts.lato(
+                                                      fontSize: SizeConfig
+                                                              .textMultiplier *
+                                                          1.45,
+                                                      color: index == 0
+                                                          ? AppTheme
+                                                              .floatingColor
+                                                          : AppTheme.txtColor),
+                                                ),
+                                              )
+                                            : Text(
+                                                dashboardList[index]
+                                                    .title
+                                                    .toUpperCase(),
+                                                style: GoogleFonts.lato(
+                                                    fontSize: SizeConfig
+                                                            .textMultiplier *
+                                                        1.45,
+                                                    color: index == 0
+                                                        ? AppTheme.floatingColor
+                                                        : AppTheme.txtColor),
+                                              ),
+                                      ),
+                                    ),
+                                  ],
+                                );
+                              }),
+                        ),
+                      ],
+                    )),*/
                 Container(
-                  color: AppTheme.appBackgroundColor,
-                  padding: EdgeInsets.only(
-                    top: 16.h,
-                    bottom: 10.h,
-                  ),
-                  margin: EdgeInsets.only(left: 17.w),
+                  margin: EdgeInsets.only(top: 16.h, left: 17.h, bottom: 10.h),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Container(
-                        padding: EdgeInsets.symmetric(
-                            vertical: 6.h, horizontal: 10.h),
-                        decoration: BoxDecoration(
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey,
-                                offset: Offset(0.0, 1.0), //(x,y)
-                                blurRadius: 2.0,
-                              ),
-                            ],
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(15.0)),
-                            color: Colors.white),
-                        child: Text(
-                          'YOUR PLOTS',
-                          style: GoogleFonts.lato(
-                            color: AppTheme.floatingColor,
-                            fontSize: 12.nsp,
+                      Flexible(
+                        flex: 2,
+                        child: Container(
+                          padding: EdgeInsets.symmetric(
+                              vertical: 6.h, horizontal: 10.h),
+                          decoration: BoxDecoration(
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey,
+                                  offset: Offset(0.0, 1.0), //(x,y)
+                                  blurRadius: 2.0,
+                                ),
+                              ],
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(15.0)),
+                              color: Colors.white),
+                          child: Text(
+                            'YOUR PLOTS',
+                            style: GoogleFonts.lato(
+                              color: AppTheme.floatingColor,
+                              fontSize: SizeConfig.textMultiplier * 1.5,
+                            ),
                           ),
                         ),
                       ),
-                      Container(
-                        padding: EdgeInsets.fromLTRB(10.w, 6.h, 16.w, 6.h),
-                        margin: EdgeInsets.only(left: 11.w),
-                        decoration: BoxDecoration(
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey,
-                                offset: Offset(0.0, 1.0), //(x,y)
-                                blurRadius: 2.0,
-                              ),
-                            ],
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(12.0)),
-                            color: Colors.white),
-                        child: Badge(
-                          padding: EdgeInsets.all(4.0),
-                          badgeContent: Text(''),
-                          badgeColor: AppTheme.notifyColor,
-                          child: Text(
-                            'WRITING PROMPTS',
-                            style: GoogleFonts.lato(
-                                fontSize: 12.nsp, color: AppTheme.txtColor),
+                      Flexible(
+                        flex: 3,
+                        child: Container(
+                          padding: EdgeInsets.fromLTRB(10.w, 6.h, 16.w, 6.h),
+                          margin: EdgeInsets.only(left: 11.w),
+                          decoration: BoxDecoration(
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey,
+                                  offset: Offset(0.0, 1.0), //(x,y)
+                                  blurRadius: 2.0,
+                                ),
+                              ],
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(12.0)),
+                              color: Colors.white),
+                          child: Badge(
+                            padding: EdgeInsets.all(4.0),
+                            badgeContent: Text(''),
+                            badgeColor: AppTheme.notifyColor,
+                            child: Text(
+                              'WRITING PROMPTS',
+                              style: GoogleFonts.lato(
+                                  fontSize: SizeConfig.textMultiplier * 1.4,
+                                  color: AppTheme.txtColor),
+                            ),
                           ),
                         ),
                       ),
-                      Container(
-                        padding: EdgeInsets.fromLTRB(11.w, 6.h, 17.w, 6.h),
-                        margin: EdgeInsets.only(left: 11.w, right: 17.w),
-                        decoration: BoxDecoration(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(12.0)),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey,
-                                offset: Offset(0.0, 1.0), //(x,y)
-                                blurRadius: 2.0,
-                              ),
-                            ],
-                            color: Colors.white),
-                        child: Badge(
-                          padding: EdgeInsets.all(4.0),
-                          badgeContent: Text(''),
-                          badgeColor: AppTheme.notifyColor,
-                          child: Text(
-                            'INVITES',
-                            style: GoogleFonts.lato(
-                                fontSize: 12.nsp, color: AppTheme.txtColor),
+                      Flexible(
+                        flex: 2,
+                        child: Container(
+                          padding: EdgeInsets.fromLTRB(11.w, 6.h, 17.w, 6.h),
+                          margin: EdgeInsets.only(left: 11.w, right: 17.w),
+                          decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(12.0)),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey,
+                                  offset: Offset(0.0, 1.0), //(x,y)
+                                  blurRadius: 2.0,
+                                ),
+                              ],
+                              color: Colors.white),
+                          child: Badge(
+                            padding: EdgeInsets.all(4.0),
+                            badgeContent: Text(''),
+                            badgeColor: AppTheme.notifyColor,
+                            child: Text(
+                              'INVITES',
+                              style: GoogleFonts.lato(
+                                  fontSize: SizeConfig.textMultiplier * 1.4,
+                                  color: AppTheme.txtColor),
+                            ),
                           ),
                         ),
                       ),
@@ -216,10 +301,11 @@ class _HomeScreenState extends State<HomeScreen> {
                       itemBuilder: (context, index) {
                         return Container(
                           padding: EdgeInsets.only(
-                              left: index == 0 ? 34.w : 11.w,
-                              right: index == 4 ? 34.w : 1.w,
-                              top: SizeConfig.heightMultiplier * 1),
-                          child: SingleChildScrollView(
+                              left: index == 0 ? 34.w : 12.w,
+                              right: index == 4 ? 34.w : 0.w,
+                              top: SizeConfig.heightMultiplier * 0.1),
+                          margin: EdgeInsets.all(5),
+                          child: Container(
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -248,12 +334,15 @@ class _HomeScreenState extends State<HomeScreen> {
                                         top: SizeConfig.heightMultiplier * 1),
                                     child: Stack(
                                       children: [
-                                        Image(
-                                          image: AssetImage(
-                                              'assets/images/2.jpeg'),
-                                          height: 400.h,
-                                          width: 300.w,
-                                          fit: BoxFit.cover,
+                                        Container(
+                                          color: Colors.red,
+                                          child: Image(
+                                            height: 400.h,
+                                            width: 300.h,
+                                            image: AssetImage(
+                                                'assets/images/2.jpeg'),
+                                            fit: BoxFit.cover,
+                                          ),
                                         ),
                                         Positioned(
                                           top: 10.h,
@@ -304,35 +393,35 @@ class _HomeScreenState extends State<HomeScreen> {
                                     ),
                                   ),
                                 ),
-                                Padding(
-                                  padding: EdgeInsets.only(top: 9.h),
-                                  child: Container(
-                                    width:
-                                        MediaQuery.of(context).size.width / 1.3,
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          'Entries: 0',
-                                          style: GoogleFonts.lato(
-                                            fontSize: 12.sp,
-                                            color: AppTheme.txtColor,
-                                          ),
+                                SizedBox(
+                                  height: SizeConfig.heightMultiplier * 1,
+                                ),
+                                Container(
+                                  width: 300.h,
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        'Entries: 0',
+                                        style: GoogleFonts.lato(
+                                          fontSize:
+                                              SizeConfig.textMultiplier * 1.6,
+                                          color: AppTheme.txtColor,
                                         ),
-                                        Text(
-                                          'Edited: Never',
-                                          style: GoogleFonts.lato(
-                                              fontSize: 12.sp,
-                                              color: AppTheme.txtColor),
-                                        ),
-                                      ],
-                                    ),
+                                      ),
+                                      Text(
+                                        'Edited: Never',
+                                        style: GoogleFonts.lato(
+                                            fontSize:
+                                                SizeConfig.textMultiplier * 1.6,
+                                            color: AppTheme.txtColor),
+                                      ),
+                                    ],
                                   ),
                                 ),
                                 Container(
-                                  width:
-                                      MediaQuery.of(context).size.width / 1.3,
+                                  width: 300.h,
                                   child: Padding(
                                     padding: EdgeInsets.only(
                                         top: SizeConfig.heightMultiplier * 2),
@@ -340,7 +429,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                       'Click the orange button, or tap on the author name and the title to edit, then tap on the cover '
                                       'to find a random cover photo based on your title. Tap again to get another photo.',
                                       style: GoogleFonts.lora(
-                                        fontSize: 13.sp,
+                                        fontSize:
+                                            SizeConfig.heightMultiplier * 1.7,
                                         color: AppTheme.txtColor,
                                         height: 1.5,
                                       ),
@@ -361,3 +451,82 @@ class _HomeScreenState extends State<HomeScreen> {
         ));
   }
 }
+
+/*
+Row(
+mainAxisAlignment: MainAxisAlignment.spaceBetween,
+children: [
+Container(
+padding: EdgeInsets.symmetric(
+vertical: 6.h, horizontal: 10.h),
+decoration: BoxDecoration(
+boxShadow: [
+BoxShadow(
+color: Colors.grey,
+offset: Offset(0.0, 1.0), //(x,y)
+blurRadius: 2.0,
+),
+],
+borderRadius:
+BorderRadius.all(Radius.circular(15.0)),
+color: Colors.white),
+child: Text(
+'YOUR PLOTS',
+style: GoogleFonts.lato(
+color: AppTheme.floatingColor,
+fontSize: 12.nsp,
+),
+),
+),
+Container(
+padding: EdgeInsets.fromLTRB(10.w, 6.h, 16.w, 6.h),
+margin: EdgeInsets.only(left: 11.w),
+decoration: BoxDecoration(
+boxShadow: [
+BoxShadow(
+color: Colors.grey,
+offset: Offset(0.0, 1.0), //(x,y)
+blurRadius: 2.0,
+),
+],
+borderRadius:
+BorderRadius.all(Radius.circular(12.0)),
+color: Colors.white),
+child: Badge(
+padding: EdgeInsets.all(4.0),
+badgeContent: Text(''),
+badgeColor: AppTheme.notifyColor,
+child: Text(
+'WRITING PROMPTS',
+style: GoogleFonts.lato(
+fontSize: 12.nsp, color: AppTheme.txtColor),
+),
+),
+),
+Container(
+padding: EdgeInsets.fromLTRB(11.w, 6.h, 17.w, 6.h),
+margin: EdgeInsets.only(left: 11.w, right: 17.w),
+decoration: BoxDecoration(
+borderRadius:
+BorderRadius.all(Radius.circular(12.0)),
+boxShadow: [
+BoxShadow(
+color: Colors.grey,
+offset: Offset(0.0, 1.0), //(x,y)
+blurRadius: 2.0,
+),
+],
+color: Colors.white),
+child: Badge(
+padding: EdgeInsets.all(4.0),
+badgeContent: Text(''),
+badgeColor: AppTheme.notifyColor,
+child: Text(
+'INVITES',
+style: GoogleFonts.lato(
+fontSize: 12.nsp, color: AppTheme.txtColor),
+),
+),
+),
+],
+),*/
