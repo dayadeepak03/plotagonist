@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:plotagonist/Screen/share_screen.dart';
-import 'package:plotagonist/Utils/size_config.dart';
 import 'package:plotagonist/Utils/styling.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BookWallpaper extends StatefulWidget {
   final author;
@@ -52,14 +52,14 @@ class _BookWallpaperState extends State<BookWallpaper> {
               },
               child: Text(
                 'Cancel',
-                style: TextStyle(color: AppTheme.txtappBar, fontSize: 18.0),
+                style: TextStyle(color: AppTheme.txtappBar, fontSize: 18.nsp),
               ),
             ),
           ],
         ),
         middle: Text(
           'Create New Plot',
-          style: TextStyle(color: Colors.black, fontSize: 18.0),
+          style: TextStyle(color: Colors.black, fontSize: 18.nsp),
         ),
         trailing: GestureDetector(
           onTap: () {
@@ -68,7 +68,7 @@ class _BookWallpaperState extends State<BookWallpaper> {
           },
           child: Text(
             'Save',
-            style: TextStyle(color: AppTheme.txtappBar, fontSize: 18.0),
+            style: TextStyle(color: AppTheme.txtappBar, fontSize: 18.nsp),
           ),
         ),
       ),
@@ -76,10 +76,7 @@ class _BookWallpaperState extends State<BookWallpaper> {
       body: Stack(
         children: [
           Container(
-            margin: EdgeInsets.only(
-                left: SizeConfig.heightMultiplier * 1.5,
-                top: SizeConfig.heightMultiplier * 1.5,
-                right: SizeConfig.heightMultiplier * 1.5),
+            margin: EdgeInsets.only(left: 15.h, top: 10.h, right: 15.h),
             child: ModalProgressHUD(
               opacity: 0.9,
               inAsyncCall: _isInAsyncCall,
@@ -90,8 +87,7 @@ class _BookWallpaperState extends State<BookWallpaper> {
                     child: CircularProgressIndicator(),
                   ),
                   Padding(
-                    padding:
-                        EdgeInsets.only(top: SizeConfig.heightMultiplier * 1),
+                    padding: EdgeInsets.only(top: 10.h),
                     child: Text(
                       'Loading new cover image',
                       style: TextStyle(color: Colors.white),
@@ -104,18 +100,18 @@ class _BookWallpaperState extends State<BookWallpaper> {
                   Container(
                     child: Image(
                       image: AssetImage(path),
-                      height: MediaQuery.of(context).size.height / 1.99,
-                      width: MediaQuery.of(context).size.width,
-                      fit: BoxFit.cover,
+                      height: 465.h,
+                      width: 345.w,
+                      fit: BoxFit.fill,
                     ),
                   ),
                   Positioned(
-                    top: SizeConfig.heightMultiplier * 1,
-                    left: SizeConfig.heightMultiplier * 1,
-                    bottom: SizeConfig.heightMultiplier * 0,
-                    right: SizeConfig.heightMultiplier * 1,
+                    top: 10.h,
+                    left: 10.h,
+                    bottom: 0.h,
+                    right: 10.h,
                     child: Container(
-                      padding: EdgeInsets.all(SizeConfig.heightMultiplier * 1),
+                      padding: EdgeInsets.only(top: 10.h, left: 13.h),
                       decoration: BoxDecoration(
                         border: Border.all(
                           color: Color.fromRGBO(255, 255, 255, 0.2),
@@ -128,27 +124,23 @@ class _BookWallpaperState extends State<BookWallpaper> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Container(
-                                padding: EdgeInsets.all(
-                                    SizeConfig.heightMultiplier * 0.1),
                                 child: Text(
                                   widget.author,
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 17.0,
+                                      fontSize: 16.nsp,
                                       height: 1),
                                 ),
                               ),
                               Container(
-                                padding: EdgeInsets.all(
-                                    SizeConfig.heightMultiplier * 0.1),
                                 child: IntrinsicWidth(
                                   child: Text(
                                     widget.title,
                                     style: TextStyle(
                                       color: Colors.white,
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 28.0,
+                                      fontSize: 32.nsp,
                                     ),
                                   ),
                                 ),
@@ -160,32 +152,32 @@ class _BookWallpaperState extends State<BookWallpaper> {
                     ),
                   ),
                   Positioned(
-                    top: SizeConfig.heightMultiplier * 3,
-                    right: SizeConfig.heightMultiplier * 3,
+                    top: 19.h,
+                    right: 16.h,
                     child: Container(
-                      padding: EdgeInsets.all(7.0),
+                      padding: EdgeInsets.all(8.h),
                       decoration: BoxDecoration(
                           shape: BoxShape.circle, color: AppTheme.appBarCoin),
                       child: Icon(
                         Icons.arrow_downward,
                         color: Colors.white,
-                        size: 18.0,
+                        size: 16.nsp,
                       ),
                     ),
                   ),
                   Positioned(
-                    bottom: SizeConfig.heightMultiplier * 0,
-                    left: 0.5,
-                    right: 0.5,
+                    bottom: 0.h,
+                    left: 0.5.h,
+                    right: 0.5.h,
                     child: Container(
-                      padding: EdgeInsets.all(SizeConfig.heightMultiplier * 1),
+                      padding: EdgeInsets.all(10.h),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Flexible(
                             flex: 1,
                             child: ButtonTheme(
-                              minWidth: 30.0,
+                              minWidth: 30.h,
                               child: RaisedButton(
                                 color: Colors.white,
                                 textColor: AppTheme.notifyColor,
@@ -194,7 +186,7 @@ class _BookWallpaperState extends State<BookWallpaper> {
                                 ),
                                 child: Text(
                                   '<<',
-                                  style: TextStyle(fontSize: 12.0),
+                                  style: TextStyle(fontSize: 13.nsp),
                                 ),
                                 onPressed: () {
                                   _changeImg(img1);
@@ -203,25 +195,23 @@ class _BookWallpaperState extends State<BookWallpaper> {
                             ),
                           ),
                           SizedBox(
-                            width: 10.0,
+                            width: 8.w,
                           ),
                           Flexible(
                             flex: 4,
                             child: Container(
-                              height: 40.0,
+                              height: 40.h,
                               child: TextFormField(
                                 autofocus: true,
                                 decoration: new InputDecoration(
                                   filled: true,
                                   fillColor: Colors.white,
-                                  contentPadding: EdgeInsets.symmetric(
-                                      horizontal:
-                                          SizeConfig.heightMultiplier * 1.3),
+                                  contentPadding:
+                                      EdgeInsets.symmetric(horizontal: 12.h),
                                   border: new OutlineInputBorder(
                                     borderSide: new BorderSide(
                                         color: AppTheme.appBarColor),
-                                    borderRadius: BorderRadius.circular(
-                                        SizeConfig.heightMultiplier * 2.5),
+                                    borderRadius: BorderRadius.circular(20.h),
                                   ),
                                   hintText: 'Empty Streets',
                                   suffixIcon: GestureDetector(
@@ -229,8 +219,7 @@ class _BookWallpaperState extends State<BookWallpaper> {
                                       showOverlay();
                                     },
                                     child: Container(
-                                      margin: EdgeInsets.all(
-                                          SizeConfig.heightMultiplier * 0.6),
+                                      margin: EdgeInsets.all(5.h),
                                       decoration: BoxDecoration(
                                           shape: BoxShape.circle,
                                           color: AppTheme.appBarCoin),
@@ -247,12 +236,12 @@ class _BookWallpaperState extends State<BookWallpaper> {
                             ),
                           ),
                           SizedBox(
-                            width: 10.0,
+                            width: 8.w,
                           ),
                           Flexible(
                             flex: 1,
                             child: ButtonTheme(
-                              minWidth: 30.0,
+                              minWidth: 30.h,
                               child: RaisedButton(
                                 color: Colors.white,
                                 textColor: AppTheme.notifyColor,
@@ -261,7 +250,7 @@ class _BookWallpaperState extends State<BookWallpaper> {
                                 ),
                                 child: Text(
                                   '>>',
-                                  style: TextStyle(fontSize: 12.0),
+                                  style: TextStyle(fontSize: 13.nsp),
                                 ),
                                 onPressed: () {
                                   _changeImg(img2);
