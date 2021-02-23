@@ -36,8 +36,14 @@ class NewForm extends StatelessWidget {
             children: [
               InkWell(
                 onTap: () {
-                  Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => Login()));
+
+                  Navigator.pushReplacement(
+                    context,
+                    PageRouteBuilder(
+                      pageBuilder: (context, animation1, animation2) => Login(),
+                      transitionDuration: Duration(seconds: 0),
+                    ),
+                  );
                 },
                 child: Text(
                   "LOGIN",

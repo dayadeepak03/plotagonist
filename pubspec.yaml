@@ -37,7 +37,7 @@ dependencies:
   flutter_screenutil: ^4.0.3+1
   flick_video_player: any
   video_player: any
-
+  mask_text_input_formatter: ^1.2.1
 
 dev_dependencies:
   flutter_test:

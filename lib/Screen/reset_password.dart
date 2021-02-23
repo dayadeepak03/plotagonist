@@ -1,20 +1,19 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/screen_util.dart';
-import 'package:plotagonist/Screen/contact_support.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:plotagonist/Screen/register.dart';
-import 'package:plotagonist/Screen/reset_code.dart';
 import 'package:plotagonist/Utils/styling.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class ForgotPassword extends StatefulWidget {
+class ResetPassword extends StatefulWidget {
   @override
-  _ForgotPasswordState createState() => _ForgotPasswordState();
+  _ResetPasswordState createState() => _ResetPasswordState();
 }
 
-class _ForgotPasswordState extends State<ForgotPassword> {
+class _ResetPasswordState extends State<ResetPassword> {
   @override
   void initState() {
     super.initState();
@@ -27,13 +26,9 @@ class _ForgotPasswordState extends State<ForgotPassword> {
   }
 }
 
-class NewForm extends StatefulWidget {
-  @override
-  _NewFormState createState() => _NewFormState();
-}
-
-class _NewFormState extends State<NewForm> {
-  bool isError = false;
+class NewForm extends StatelessWidget {
+  var maskFormatter = new MaskTextInputFormatter(
+      mask: '##-##-##', filter: {"#": RegExp(r'[0-9]')});
 
   @override
   Widget build(BuildContext context) {
@@ -109,35 +104,29 @@ class _NewFormState extends State<NewForm> {
           SizedBox(
             height: ScreenUtil().setHeight(65),
           ),
-          InkWell(
-            child: Stack(
-              alignment: Alignment.bottomCenter,
-              children: [
-                Container(
-                  child: Image.asset(
-                    'assets/images/login_logo.png',
-                    width: ScreenUtil().setWidth(192),
-                    height: ScreenUtil().setHeight(180),
-                  ),
+          Stack(
+            alignment: Alignment.bottomCenter,
+            children: [
+              Container(
+                child: Image.asset(
+                  'assets/images/login_logo.png',
+                  width: ScreenUtil().setWidth(192),
+                  height: ScreenUtil().setHeight(180),
                 ),
-              ],
-            ),
-            onTap: () {
-              setState(() {
-                isError = !isError;
-              });
-            },
+              ),
+            ],
           ),
           Container(
             width: MediaQuery.of(context).size.width,
             child: Column(
+              mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
                   width: MediaQuery.of(context).size.width,
                   child: Text(
-                    "Please enter your email address you have registered with. We'll send you an email with a 6-digit reset code.\nAfter entering the reset code, then you'll be able to set up  a new password.",
+                    "Please set up your new password",
                     style: TextStyle(
                       color: Color(
                         0xff4C4C4C,
@@ -147,7 +136,7 @@ class _NewFormState extends State<NewForm> {
                       fontStyle: FontStyle.italic,
                       fontFamily: "Lato",
                       height: 1.4,
-                      letterSpacing: 0.5,
+                      letterSpacing: 0.5538461208343506,
                     ),
                   ),
                   padding: EdgeInsets.symmetric(
@@ -167,7 +156,7 @@ class _NewFormState extends State<NewForm> {
                 Container(
                   height: ScreenUtil().setHeight(24),
                   child: Text(
-                    "EMAIL ADDRESS",
+                    "NEW PASSWORD (6 characters minimum)",
                     style: TextStyle(
                       color: Color(
                         0xffed8a19,
@@ -181,6 +170,8 @@ class _NewFormState extends State<NewForm> {
                 Container(
                   height: ScreenUtil().setHeight(30),
                   child: TextFormField(
+                    obscureText: true,
+
                     maxLines: 1,
                     style: TextStyle(
                       fontSize: ScreenUtil().setSp(16),
@@ -189,7 +180,7 @@ class _NewFormState extends State<NewForm> {
                       letterSpacing: 0.5538461208343506,
                     ),
                     decoration: InputDecoration(
-                      hintText: 'you@youremail.com',
+                      hintText: '•••••••••',
                       hintStyle: TextStyle(
                         color: Color(
                           0xffababab,
@@ -197,7 +188,7 @@ class _NewFormState extends State<NewForm> {
                         fontSize: ScreenUtil().setSp(16),
                         fontWeight: FontWeight.w400,
                         fontFamily: "Lato",
-                        letterSpacing: 0.5,
+                        letterSpacing: 0.5538461208343506,
                       ),
                       enabledBorder: new UnderlineInputBorder(
                           borderSide: new BorderSide(
@@ -231,15 +222,12 @@ class _NewFormState extends State<NewForm> {
                       color: Color(
                         0xffed8a19,
                       ),
-                      onPressed: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (_) => ResetCode()));
-                      },
+                      onPressed: () {},
                       minWidth: ScreenUtil().setWidth(134),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 15),
                         child: Text(
-                          "SEND RESET CODE",
+                          "SET UP NEW PASSWORD",
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: ScreenUtil()
@@ -252,73 +240,6 @@ class _NewFormState extends State<NewForm> {
                       ),
                     ),
                   ),
-                ),
-                SizedBox(
-                  height: 80.h,
-                ),
-                Visibility(
-                  child: Container(
-                    width: MediaQuery.of(context).size.width,
-                    child: RichText(
-                      textAlign: TextAlign.start,
-                      text: TextSpan(
-                        children: [
-                          TextSpan(
-                            text:
-                                'We couldn’t find an account with this email address. Please try with a different email or the social logins. If all fails, please ',
-                            style: TextStyle(
-                              color: Color(
-                                0xff4C4C4C,
-                              ),
-                              fontSize: ScreenUtil().setSp(15),
-                              fontWeight: FontWeight.w400,
-                              fontStyle: FontStyle.italic,
-                              fontFamily: "Lato",
-                              height: 1.4,
-                              letterSpacing: 0.5,
-                            ),
-                          ),
-                          TextSpan(
-                            text: 'contact support.',
-                            style: new TextStyle(
-                              color: Color(
-                                0xffed8a19,
-                              ),
-                              fontSize: ScreenUtil().setSp(15),
-                              fontWeight: FontWeight.w700,
-                              fontStyle: FontStyle.italic,
-                              fontFamily: "Lato",
-                              height: 1.4,
-                              letterSpacing: 0.5,
-                            ),
-                            recognizer: TapGestureRecognizer()..onTap = () {
-                              Navigator.push(context,
-                                  MaterialPageRoute(builder: (_) => ContactSupport()));
-
-
-                            },
-                          ),
-                        ],
-                      ),
-                    ),
-                    padding: EdgeInsets.symmetric(
-                        horizontal: ScreenUtil().setWidth(13),
-                        vertical: ScreenUtil().setWidth(13)),
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                          color: Color(
-                        0xffC74C4D,
-                      )),
-                      color: Color(
-                        0xffF9D6D6,
-                      ),
-                      shape: BoxShape.rectangle,
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(ScreenUtil().radius(5)),
-                      ),
-                    ),
-                  ),
-                  visible: isError,
                 ),
               ],
             ),

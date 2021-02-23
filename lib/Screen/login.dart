@@ -45,7 +45,7 @@ class NewForm extends StatelessWidget {
                 "LOGIN",
                 style: TextStyle(
                   color: Color(
-                    0xffed8a19   ,
+                    0xffed8a19,
                   ),
                   fontSize: ScreenUtil().setSp(12),
                   fontWeight: FontWeight.w400,
@@ -57,8 +57,14 @@ class NewForm extends StatelessWidget {
               ),
               InkWell(
                 onTap: () {
-                  Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => Register()));
+                  Navigator.pushReplacement(
+                    context,
+                    PageRouteBuilder(
+                      pageBuilder: (context, animation1, animation2) =>
+                          Register(),
+                      transitionDuration: Duration(seconds: 0),
+                    ),
+                  );
                 },
                 child: Text(
                   "REGISTER",
@@ -231,8 +237,10 @@ class NewForm extends StatelessWidget {
                         0xffed8a19,
                       ),
                       onPressed: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => HomeScreen()));
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => HomeScreen()));
                       },
                       minWidth: ScreenUtil().setWidth(134),
                       child: Text(
@@ -257,8 +265,10 @@ class NewForm extends StatelessWidget {
                     materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     padding: EdgeInsets.all(0),
                     onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => ForgotPassword()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ForgotPassword()));
                     },
                     height: ScreenUtil().setHeight(30),
                     child: Text(
@@ -291,10 +301,10 @@ class NewForm extends StatelessWidget {
                           height: ScreenUtil().setHeight(42),
                         ),
                         onTap: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => FinishRegister()));
-
-
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => FinishRegister()));
                         },
                       ),
                       SizedBox(
@@ -302,8 +312,10 @@ class NewForm extends StatelessWidget {
                       ),
                       InkWell(
                         onTap: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => FinishRegister()));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => FinishRegister()));
                         },
                         child: Image.asset(
                           'assets/images/google_logo.png',
@@ -316,8 +328,10 @@ class NewForm extends StatelessWidget {
                       ),
                       InkWell(
                         onTap: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => FinishRegister()));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => FinishRegister()));
                         },
                         child: Image.asset(
                           'assets/images/twitter_logo.png',
@@ -330,8 +344,10 @@ class NewForm extends StatelessWidget {
                       ),
                       InkWell(
                         onTap: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => FinishRegister()));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => FinishRegister()));
                         },
                         child: Image.asset(
                           'assets/images/apple_logo.png',

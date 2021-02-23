@@ -1,20 +1,22 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/screen_util.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:plotagonist/Screen/contact_support.dart';
 import 'package:plotagonist/Screen/register.dart';
-import 'package:plotagonist/Screen/reset_code.dart';
+import 'package:plotagonist/Screen/reset_password.dart';
 import 'package:plotagonist/Utils/styling.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class ForgotPassword extends StatefulWidget {
+class ResetCode extends StatefulWidget {
   @override
-  _ForgotPasswordState createState() => _ForgotPasswordState();
+  _ResetCodeState createState() => _ResetCodeState();
 }
 
-class _ForgotPasswordState extends State<ForgotPassword> {
+class _ResetCodeState extends State<ResetCode> {
   @override
   void initState() {
     super.initState();
@@ -34,6 +36,9 @@ class NewForm extends StatefulWidget {
 
 class _NewFormState extends State<NewForm> {
   bool isError = false;
+
+  var maskFormatter = new MaskTextInputFormatter(
+      mask: '##-##-##', filter: {"#": RegExp(r'[0-9]')});
 
   @override
   Widget build(BuildContext context) {
@@ -109,24 +114,17 @@ class _NewFormState extends State<NewForm> {
           SizedBox(
             height: ScreenUtil().setHeight(65),
           ),
-          InkWell(
-            child: Stack(
-              alignment: Alignment.bottomCenter,
-              children: [
-                Container(
-                  child: Image.asset(
-                    'assets/images/login_logo.png',
-                    width: ScreenUtil().setWidth(192),
-                    height: ScreenUtil().setHeight(180),
-                  ),
+          Stack(
+            alignment: Alignment.bottomCenter,
+            children: [
+              Container(
+                child: Image.asset(
+                  'assets/images/login_logo.png',
+                  width: ScreenUtil().setWidth(192),
+                  height: ScreenUtil().setHeight(180),
                 ),
-              ],
-            ),
-            onTap: () {
-              setState(() {
-                isError = !isError;
-              });
-            },
+              ),
+            ],
           ),
           Container(
             width: MediaQuery.of(context).size.width,
@@ -137,7 +135,7 @@ class _NewFormState extends State<NewForm> {
                 Container(
                   width: MediaQuery.of(context).size.width,
                   child: Text(
-                    "Please enter your email address you have registered with. We'll send you an email with a 6-digit reset code.\nAfter entering the reset code, then you'll be able to set up  a new password.",
+                    "After entering your reset code, you’ll be prompted to set up a new password.",
                     style: TextStyle(
                       color: Color(
                         0xff4C4C4C,
@@ -147,7 +145,7 @@ class _NewFormState extends State<NewForm> {
                       fontStyle: FontStyle.italic,
                       fontFamily: "Lato",
                       height: 1.4,
-                      letterSpacing: 0.5,
+                      letterSpacing: 0.5538461208343506,
                     ),
                   ),
                   padding: EdgeInsets.symmetric(
@@ -167,7 +165,7 @@ class _NewFormState extends State<NewForm> {
                 Container(
                   height: ScreenUtil().setHeight(24),
                   child: Text(
-                    "EMAIL ADDRESS",
+                    "RESET CODE",
                     style: TextStyle(
                       color: Color(
                         0xffed8a19,
@@ -181,6 +179,8 @@ class _NewFormState extends State<NewForm> {
                 Container(
                   height: ScreenUtil().setHeight(30),
                   child: TextFormField(
+                    keyboardType: TextInputType.number,
+                    inputFormatters: [maskFormatter],
                     maxLines: 1,
                     style: TextStyle(
                       fontSize: ScreenUtil().setSp(16),
@@ -189,7 +189,7 @@ class _NewFormState extends State<NewForm> {
                       letterSpacing: 0.5538461208343506,
                     ),
                     decoration: InputDecoration(
-                      hintText: 'you@youremail.com',
+                      hintText: '00-00-00',
                       hintStyle: TextStyle(
                         color: Color(
                           0xffababab,
@@ -197,7 +197,7 @@ class _NewFormState extends State<NewForm> {
                         fontSize: ScreenUtil().setSp(16),
                         fontWeight: FontWeight.w400,
                         fontFamily: "Lato",
-                        letterSpacing: 0.5,
+                        letterSpacing: 0.5538461208343506,
                       ),
                       enabledBorder: new UnderlineInputBorder(
                           borderSide: new BorderSide(
@@ -233,13 +233,13 @@ class _NewFormState extends State<NewForm> {
                       ),
                       onPressed: () {
                         Navigator.push(context,
-                            MaterialPageRoute(builder: (_) => ResetCode()));
+                            MaterialPageRoute(builder: (_) => ResetPassword()));
                       },
                       minWidth: ScreenUtil().setWidth(134),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 15),
                         child: Text(
-                          "SEND RESET CODE",
+                          "RESET PASSWORD",
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: ScreenUtil()
@@ -254,7 +254,71 @@ class _NewFormState extends State<NewForm> {
                   ),
                 ),
                 SizedBox(
-                  height: 80.h,
+                  height: 39.h,
+                ),
+                Center(
+                  child: Text(
+                    "No email received?",
+                    style: TextStyle(
+                      color: Color(
+                        0xff4C4C4C,
+                      ),
+                      fontSize: ScreenUtil().setSp(15),
+                      fontWeight: FontWeight.w900,
+                      fontFamily: "Lato",
+                      height: 1.4,
+                      letterSpacing: 0.5538461208343506,
+                    ),
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 44.w),
+                  child: RichText(
+                    textAlign: TextAlign.center,
+                    text: TextSpan(
+                      children: [
+                        TextSpan(
+                          text:
+                              'Please make sure you have checked your spam and junk folders. If the email haven\'t arrived in 5 minutes, ',
+                          style: TextStyle(
+                            color: Color(
+                              0xff4C4C4C,
+                            ),
+                            fontSize: ScreenUtil().setSp(15),
+                            fontWeight: FontWeight.w400,
+                            fontStyle: FontStyle.italic,
+                            fontFamily: "Lato",
+                            height: 1.4,
+                            letterSpacing: 0.5,
+                          ),
+                        ),
+                        TextSpan(
+                          text: 'click here to resend',
+                          style: new TextStyle(
+                            color: Color(
+                              0xffed8a19,
+                            ),
+                            fontSize: ScreenUtil().setSp(15),
+                            fontWeight: FontWeight.w700,
+                            fontStyle: FontStyle.italic,
+                            fontFamily: "Lato",
+                            height: 1.4,
+                            letterSpacing: 0.5538461208343506,
+                          ),
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () {
+                            print("object");
+                              setState(() {
+                                isError = !isError;
+                              });
+                            },
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 48.h,
                 ),
                 Visibility(
                   child: Container(
@@ -265,7 +329,7 @@ class _NewFormState extends State<NewForm> {
                         children: [
                           TextSpan(
                             text:
-                                'We couldn’t find an account with this email address. Please try with a different email or the social logins. If all fails, please ',
+                                'Reset code incorrect, or expired. Please try again with the latest reset code. If all fails, please ',
                             style: TextStyle(
                               color: Color(
                                 0xff4C4C4C,
@@ -294,8 +358,6 @@ class _NewFormState extends State<NewForm> {
                             recognizer: TapGestureRecognizer()..onTap = () {
                               Navigator.push(context,
                                   MaterialPageRoute(builder: (_) => ContactSupport()));
-
-
                             },
                           ),
                         ],
