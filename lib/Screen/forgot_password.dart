@@ -1,7 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/screen_util.dart';
 import 'package:plotagonist/Screen/register.dart';
+import 'package:plotagonist/Utils/styling.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ForgotPassword extends StatefulWidget {
   @override
@@ -31,68 +34,67 @@ class NewForm extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(18)),
         shrinkWrap: true,
         children: [
-          SizedBox(
-            height: 10,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+
+          Flex(
+            direction: Axis.horizontal,
+            mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              InkWell(
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Register()));
-                },
-                child: Container(
-                  width: MediaQuery.of(context).size.width,
-                  color: Colors.grey,
-                  child: Stack(
-                    children: [
-                      Align(
-                        alignment: Alignment.center,
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Text(
-                              "RESET PASSWORD1",
-                              style: TextStyle(
-                                color: Color(
-                                  0xff4c4c4c,
-                                ),
-                                fontSize: ScreenUtil().setSp(12),
-                                fontWeight: FontWeight.w400,
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
-                            Text(
-                              "RESET PASSWORD1",
-                              style: TextStyle(
-                                color: Color(
-                                  0xff4c4c4c,
-                                ),
-                                fontSize: ScreenUtil().setSp(12),
-                                fontWeight: FontWeight.w400,
-                              ),
-                              textAlign: TextAlign.center,
-                            )
-                          ],
-                        ),
-                      ),
-                      Text(
+              Expanded(
+                  child: Container(
+                height: 50,
+                child: Stack(
+                  children: [
+                    Align(
+                      child: Text(
                         "RESET PASSWORD",
                         style: TextStyle(
                           color: Color(
                             0xff4c4c4c,
                           ),
-                          fontSize: ScreenUtil().setSp(12),
+                          fontSize: 13.ssp,
                           fontWeight: FontWeight.w400,
                         ),
                         textAlign: TextAlign.center,
-                      )
-                    ],
-                  ),
+                      ),
+                      alignment: Alignment.center,
+                    ),
+                    Align(
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Image.asset(
+                              'assets/images/img_back.png',
+                              width: ScreenUtil().setWidth(24),
+                              height: ScreenUtil().setHeight(24),
+                            ),
+                            SizedBox(
+                              width: 4.5.w,
+                            ),
+                            Text(
+                              "BACK",
+                              style: TextStyle(
+                                color: Color(
+                                  0xff4c4c4c,
+                                ),
+                                fontSize: 11.ssp,
+                                fontWeight: FontWeight.w400,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
+                        ),
+                      ),
+                      alignment: Alignment.centerRight,
+                    ),
+                  ],
                 ),
-              )
+              )),
             ],
           ),
           SizedBox(
