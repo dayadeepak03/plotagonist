@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:plotagonist/Models/sub_genre_model.dart';
 import 'package:plotagonist/Screen/plot_summary.dart';
-import 'package:plotagonist/Utils/size_config.dart';
 import 'package:plotagonist/Utils/styling.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SubGenreScreen extends StatefulWidget {
   final genre;
@@ -32,7 +32,8 @@ class _SubGenreScreenState extends State<SubGenreScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       floatingActionButton: Container(
-        height: 30.0,
+        height: 40.h,
+        width: 0.45.sw,
         child: FloatingActionButton.extended(
           backgroundColor:
               _selectedIndex >= 0 ? AppTheme.appBarCoin : Colors.transparent,
@@ -45,7 +46,8 @@ class _SubGenreScreenState extends State<SubGenreScreen> {
           },
           label: Text(
             'NEXT STEP',
-            style: TextStyle(
+            style: GoogleFonts.lato(
+                fontSize: 16.sp,
                 color: _selectedIndex >= 0 ? Colors.white : Colors.grey,
                 fontWeight: FontWeight.bold),
           ),
@@ -63,14 +65,14 @@ class _SubGenreScreenState extends State<SubGenreScreen> {
               },
               child: Text(
                 'Cancel',
-                style: TextStyle(color: AppTheme.txtappBar, fontSize: 18.0),
+                style: TextStyle(color: AppTheme.txtappBar, fontSize: 17.sp),
               ),
             ),
           ],
         ),
         middle: Text(
           'Choose SubGenre',
-          style: TextStyle(color: Colors.black, fontSize: 18.0),
+          style: TextStyle(color: Colors.black, fontSize: 17.sp),
         ),
         trailing: GestureDetector(
           onTap: () {
@@ -79,7 +81,7 @@ class _SubGenreScreenState extends State<SubGenreScreen> {
           },
           child: Text(
             'Skip',
-            style: TextStyle(color: AppTheme.txtappBar, fontSize: 18.0),
+            style: TextStyle(color: AppTheme.txtappBar, fontSize: 17.sp),
           ),
         ),
       ),
@@ -89,36 +91,13 @@ class _SubGenreScreenState extends State<SubGenreScreen> {
             children: [
               Stack(
                 children: [
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: Container(
-                      margin: EdgeInsets.only(
-                          left: SizeConfig.heightMultiplier * 1,
-                          top: SizeConfig.heightMultiplier * 1),
-                      height: SizeConfig.heightMultiplier * 5.5,
-                      width: SizeConfig.heightMultiplier * 5.5,
-                      child: ClipOval(
-                        child: Image(
-                          image: AssetImage('assets/images/6.jpeg'),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                  ),
                   Container(
-                    margin: EdgeInsets.only(
-                        left: SizeConfig.heightMultiplier * 4,
-                        right: SizeConfig.heightMultiplier * 2,
-                        top: SizeConfig.heightMultiplier * 1.2),
-                    padding: EdgeInsets.only(
-                        left: SizeConfig.heightMultiplier * 1.8,
-                        bottom: SizeConfig.heightMultiplier * 0.5),
+                    margin: EdgeInsets.only(left: 25.w, right: 13.w, top: 15.h),
+                    padding: EdgeInsets.only(left: 14.w, bottom: 10.h),
                     child: ClipPath(
                       clipper: CustomClipPath(),
                       child: Container(
-                        padding: EdgeInsets.all(
-                          SizeConfig.heightMultiplier * 1,
-                        ),
+                        padding: EdgeInsets.only(bottom: 10.h, left: 14.h),
                         decoration: BoxDecoration(
                           boxShadow: [
                             BoxShadow(
@@ -131,114 +110,105 @@ class _SubGenreScreenState extends State<SubGenreScreen> {
                           ],
                           color: AppTheme.appBarColor,
                         ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Align(
-                              alignment: Alignment.topLeft,
-                              child: Padding(
-                                padding: EdgeInsets.only(
-                                    left: SizeConfig.heightMultiplier * 3,
-                                    top: SizeConfig.heightMultiplier * 1),
-                                child: Text(
-                                  'What is the subgenre of your ${widget.genre.toString().toLowerCase()}?',
-                                  style: GoogleFonts.lora(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 14.0,
-                                      color: AppTheme.txtColor),
-                                ),
+                        child: Container(
+                          padding: EdgeInsets.only(
+                              left: 14.w, top: 8.h, bottom: 10.h),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'What is the subgenre of your ${widget.genre.toString().toLowerCase()}?',
+                                style: GoogleFonts.lora(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 14.sp,
+                                    color: AppTheme.txtColor),
                               ),
-                            ),
-                            Align(
-                              alignment: Alignment.topLeft,
-                              child: Padding(
-                                padding: EdgeInsets.only(
-                                    left: SizeConfig.heightMultiplier * 3,
-                                    top: SizeConfig.heightMultiplier * 1),
-                                child: Text(
-                                  'Please select one, so I can show you genre relevant tips. Click NEXT when you are done.',
-                                  style: GoogleFonts.lora(
-                                      fontSize: 12.0, color: AppTheme.txtColor),
-                                ),
+                              SizedBox(
+                                height: 5.h,
                               ),
-                            ),
-                          ],
+                              Text(
+                                'Please select one, so I can show you genre relevant tips. Click NEXT when you are done.',
+                                style: GoogleFonts.lora(
+                                    fontSize: 12.sp, color: AppTheme.txtColor),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: Container(
+                      margin: EdgeInsets.only(left: 14.w, top: 15.h),
+                      child: ClipOval(
+                        child: Image(
+                          image: AssetImage('assets/images/6.jpeg'),
+                          height: 34.h,
+                          width: 34.h,
+                          fit: BoxFit.fill,
                         ),
                       ),
                     ),
                   ),
                   Positioned(
-                    right: -2.0,
-                    top: -2.0,
-                    child: Container(
-                      padding:
-                          EdgeInsets.all(SizeConfig.heightMultiplier * 0.4),
-                      margin: EdgeInsets.only(
-                          top: SizeConfig.heightMultiplier * 0.6,
-                          right: SizeConfig.heightMultiplier * 1.5),
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle, color: Colors.black38),
-                      child: Icon(
-                        Icons.close,
-                        color: Colors.white,
-                        size: 15.0,
-                      ),
+                    right: 7.w,
+                    top: 10.h,
+                    child: Image(
+                      image: AssetImage('assets/images/close.png'),
+                      height: 20.h,
+                      width: 20.h,
+                      fit: BoxFit.cover,
                     ),
                   ),
                 ],
               ),
-              Stack(
-                children: [
-                  Container(
-                    margin: EdgeInsets.only(
-                        top: SizeConfig.heightMultiplier * 1,
-                        bottom: SizeConfig.heightMultiplier * 3),
-                    child: ListView.builder(
-                      shrinkWrap: true,
-                      physics: BouncingScrollPhysics(),
-                      scrollDirection: Axis.vertical,
-                      itemCount: subGenreList.length,
-                      itemBuilder: (context, index) {
-                        SubGenreModels subgenre = subGenreList[index];
-                        return Container(
-                          margin: EdgeInsets.symmetric(
-                              vertical: 5.0, horizontal: 20.0),
-                          padding: EdgeInsets.only(top: 15.0, bottom: 15.0),
-                          decoration: BoxDecoration(
-                              color: _selectedIndex == index
-                                  ? AppTheme.selectIndex
-                                  : AppTheme.clippathColor,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(5.0))),
-                          width: MediaQuery.of(context).size.width,
-                          child: ListTile(
-                            leading: Container(
-                              child: ClipOval(
-                                child: Image(
-                                  image: AssetImage(subgenre.img),
-                                  height: 62,
-                                  width: 57,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
+              Container(
+                margin: EdgeInsets.only(top: 10.h, bottom: 60.h),
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  physics: BouncingScrollPhysics(),
+                  scrollDirection: Axis.vertical,
+                  itemCount: subGenreList.length,
+                  itemBuilder: (context, index) {
+                    SubGenreModels subgenre = subGenreList[index];
+                    return Container(
+                      margin:
+                          EdgeInsets.symmetric(vertical: 6.h, horizontal: 23.w),
+                      padding:
+                          EdgeInsets.only(top: 10.h, bottom: 10.h, left: 10.h),
+                      decoration: BoxDecoration(
+                          color: _selectedIndex == index
+                              ? AppTheme.selectIndex
+                              : AppTheme.clippathColor,
+                          borderRadius: BorderRadius.all(Radius.circular(5.h))),
+                      width: MediaQuery.of(context).size.width,
+                      child: ListTile(
+                        leading: Container(
+                          child: ClipOval(
+                            child: Image(
+                              image: AssetImage(subgenre.img),
+                              height: 62,
+                              width: 57,
+                              fit: BoxFit.cover,
                             ),
-                            title: Text(
-                              subgenre.subgenreName.toUpperCase(),
-                              style: TextStyle(
-                                  fontSize: 14.0, color: AppTheme.txtColor),
-                            ),
-                            selected: index == _selectedIndex,
-                            onTap: () {
-                              setState(() {
-                                _selectedIndex = index;
-                              });
-                            },
                           ),
-                        );
-                      },
-                    ),
-                  ),
-                ],
+                        ),
+                        title: Text(
+                          subgenre.subgenreName.toUpperCase(),
+                          style: GoogleFonts.lato(
+                              fontSize: 14.sp, color: AppTheme.txtColor),
+                        ),
+                        selected: index == _selectedIndex,
+                        onTap: () {
+                          setState(() {
+                            _selectedIndex = index;
+                          });
+                        },
+                      ),
+                    );
+                  },
+                ),
               ),
             ],
           )

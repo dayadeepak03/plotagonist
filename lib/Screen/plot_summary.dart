@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:plotagonist/Screen/send_invites.dart';
-import 'package:plotagonist/Utils/size_config.dart';
 import 'package:plotagonist/Utils/styling.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PlotSummary extends StatefulWidget {
   @override
@@ -24,14 +24,14 @@ class _PlotSummaryState extends State<PlotSummary> {
               },
               child: Text(
                 'Cancel',
-                style: TextStyle(color: AppTheme.txtappBar, fontSize: 18.0),
+                style: TextStyle(color: AppTheme.txtappBar, fontSize: 17.sp),
               ),
             ),
           ],
         ),
         middle: Text(
           'Plot Summary',
-          style: TextStyle(color: Colors.black, fontSize: 18.0),
+          style: TextStyle(color: Colors.black, fontSize: 17.sp),
         ),
         trailing: GestureDetector(
           onTap: () {
@@ -40,7 +40,7 @@ class _PlotSummaryState extends State<PlotSummary> {
           },
           child: Text(
             'Skip',
-            style: TextStyle(color: AppTheme.txtappBar, fontSize: 18.0),
+            style: TextStyle(color: AppTheme.txtappBar, fontSize: 17.sp),
           ),
         ),
       ),
@@ -50,36 +50,13 @@ class _PlotSummaryState extends State<PlotSummary> {
             children: [
               Stack(
                 children: [
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: Container(
-                      margin: EdgeInsets.only(
-                          left: SizeConfig.heightMultiplier * 1,
-                          top: SizeConfig.heightMultiplier * 1),
-                      height: SizeConfig.heightMultiplier * 5.5,
-                      width: SizeConfig.heightMultiplier * 5.5,
-                      child: ClipOval(
-                        child: Image(
-                          image: AssetImage('assets/images/6.jpeg'),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                  ),
                   Container(
-                    margin: EdgeInsets.only(
-                        left: SizeConfig.heightMultiplier * 4,
-                        right: SizeConfig.heightMultiplier * 2,
-                        top: SizeConfig.heightMultiplier * 1.2),
-                    padding: EdgeInsets.only(
-                        left: SizeConfig.heightMultiplier * 1.8,
-                        bottom: SizeConfig.heightMultiplier * 0.5),
+                    margin: EdgeInsets.only(left: 25.w, right: 13.w, top: 15.h),
+                    padding: EdgeInsets.only(left: 14.w, bottom: 10.h),
                     child: ClipPath(
                       clipper: CustomClipPath(),
                       child: Container(
-                        padding: EdgeInsets.all(
-                          SizeConfig.heightMultiplier * 1,
-                        ),
+                        padding: EdgeInsets.only(bottom: 10.h, left: 15.h),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(5.0),
                           boxShadow: [
@@ -93,69 +70,66 @@ class _PlotSummaryState extends State<PlotSummary> {
                           ],
                           color: AppTheme.appBarColor,
                         ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Align(
-                              alignment: Alignment.topLeft,
-                              child: Padding(
-                                padding: EdgeInsets.only(
-                                    left: SizeConfig.heightMultiplier * 3,
-                                    top: SizeConfig.heightMultiplier * 1),
-                                child: Text(
-                                  'What’s your story about?',
-                                  style: GoogleFonts.lora(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 14.0,
-                                      color: AppTheme.txtColor),
-                                ),
+                        child: Container(
+                          padding: EdgeInsets.only(
+                              bottom: 10.h, left: 15.h, right: 15.h),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'What’s your story about?',
+                                style: GoogleFonts.lora(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 14.sp,
+                                    color: AppTheme.txtColor),
                               ),
-                            ),
-                            Align(
-                              alignment: Alignment.topLeft,
-                              child: Padding(
-                                padding: EdgeInsets.only(
-                                    left: SizeConfig.heightMultiplier * 3,
-                                    top: SizeConfig.heightMultiplier * 0.5),
-                                child: Text(
-                                  'Please try to summarise what your story is about. It’s important to have the core of your story early on, '
-                                  'so you never lose track of your North Star. Think about it like the short summary at the back of the books you have read.',
-                                  style: GoogleFonts.lora(
-                                      fontSize: 12.0, color: AppTheme.txtColor),
-                                ),
+                              SizedBox(
+                                height: 5.h,
                               ),
-                            ),
-                          ],
+                              Text(
+                                'Please try to summarise what your story is about. It’s important to have the core of your story early on, '
+                                'so you never lose track of your North Star. Think about it like the short summary at the back of the books you have read.',
+                                style: GoogleFonts.lora(
+                                    fontSize: 12.sp, color: AppTheme.txtColor),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: Container(
+                      margin: EdgeInsets.only(left: 14.w, top: 15.h),
+                      child: ClipOval(
+                        child: Image(
+                          image: AssetImage('assets/images/6.jpeg'),
+                          height: 34.h,
+                          width: 34.h,
+                          fit: BoxFit.fill,
                         ),
                       ),
                     ),
                   ),
                   Positioned(
-                    right: -2.0,
-                    top: -2.0,
-                    child: Container(
-                      padding:
-                          EdgeInsets.all(SizeConfig.heightMultiplier * 0.4),
-                      margin: EdgeInsets.only(
-                          top: SizeConfig.heightMultiplier * 0.6,
-                          right: SizeConfig.heightMultiplier * 1.5),
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle, color: Colors.black38),
-                      child: Icon(
-                        Icons.close,
-                        color: Colors.white,
-                        size: 15.0,
-                      ),
+                    right: 7.w,
+                    top: 10.h,
+                    child: Image(
+                      image: AssetImage('assets/images/close.png'),
+                      height: 20.h,
+                      width: 20.h,
+                      fit: BoxFit.cover,
                     ),
                   ),
                 ],
               ),
               Container(
                 margin: EdgeInsets.only(
-                  top: SizeConfig.heightMultiplier * 0.5,
-                  left: SizeConfig.heightMultiplier * 2,
-                  right: SizeConfig.heightMultiplier * 2,
-                  bottom: SizeConfig.heightMultiplier * 2,
+                  top: 10.h,
+                  left: 18.w,
+                  right: 18.w,
+                  bottom: 30.h,
                 ),
                 child: Column(
                   children: [
@@ -166,14 +140,13 @@ class _PlotSummaryState extends State<PlotSummary> {
                       style: TextStyle(fontSize: 20.0),
                       decoration: new InputDecoration(
                         contentPadding: EdgeInsets.symmetric(
-                            vertical: SizeConfig.heightMultiplier * 2,
-                            horizontal: 0.0),
+                            vertical: 16.h, horizontal: 0.0),
                         hintText: 'Please enter story summary',
-                        hintStyle:
-                            TextStyle(color: Colors.grey, fontSize: 16.0),
-                        labelText: 'Story Summary',
-                        labelStyle: TextStyle(
-                            color: AppTheme.appBarCoin, fontSize: 20.0),
+                        hintStyle: GoogleFonts.lato(
+                            color: Colors.grey, fontSize: 18.sp),
+                        labelText: 'Story Summary'.toUpperCase(),
+                        labelStyle: GoogleFonts.lato(
+                            color: AppTheme.appBarCoin, fontSize: 20.sp),
                         fillColor: AppTheme.appBarCoin,
                         focusedBorder: UnderlineInputBorder(
                           borderSide: BorderSide(color: AppTheme.appBarCoin),
@@ -189,11 +162,10 @@ class _PlotSummaryState extends State<PlotSummary> {
                       MaterialPageRoute(builder: (_) => SendInvites()));
                 },
                 child: Container(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: SizeConfig.heightMultiplier * 2,
-                      vertical: SizeConfig.heightMultiplier * 0.7),
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 20.h, vertical: 7.h),
                   margin: EdgeInsets.only(
-                    bottom: SizeConfig.heightMultiplier * 2,
+                    bottom: 30.h,
                   ),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(5.0)),
@@ -201,8 +173,10 @@ class _PlotSummaryState extends State<PlotSummary> {
                       border: Border.all(color: AppTheme.appBarCoin)),
                   child: Text(
                     'NEXT STEP',
-                    style: TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.bold),
+                    style: GoogleFonts.lato(
+                        fontSize: 16.sp,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold),
                   ),
                 ),
               ),

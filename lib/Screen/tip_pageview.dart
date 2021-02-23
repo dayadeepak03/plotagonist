@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:plotagonist/Screen/slider.dart';
 import 'package:plotagonist/Screen/start_screen.dart';
-import 'package:plotagonist/Utils/size_config.dart';
 import 'package:plotagonist/Utils/styling.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TipPageView extends StatefulWidget {
   @override
@@ -60,33 +61,25 @@ class _TipPageViewState extends State<TipPageView> {
               return _pages[index];
             },
           ),
-          Padding(
-            padding: EdgeInsets.only(top: SizeConfig.heightMultiplier * 4),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: List<Widget>.generate(_pages.length, (int index) {
-                      return AnimatedContainer(
-                          duration: Duration(milliseconds: 300),
-                          height: 10,
-                          width: 10,
-                          margin: EdgeInsets.only(
-                              left: SizeConfig.heightMultiplier * 0.5,
-                              right: SizeConfig.heightMultiplier * 0.5,
-                              top: SizeConfig.heightMultiplier * 3.2),
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
-                              color: (index == _currentPage)
-                                  ? Colors.orange
-                                  : Colors.grey.withOpacity(0.5)));
-                    })),
-                SizedBox(
-                  height: SizeConfig.heightMultiplier * 3,
-                ),
-              ],
-            ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: List<Widget>.generate(_pages.length, (int index) {
+                    return AnimatedContainer(
+                        duration: Duration(milliseconds: 300),
+                        height: 10,
+                        width: 10,
+                        margin:
+                            EdgeInsets.only(left: 5.h, right: 5.h, top: 45.h),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5.h),
+                            color: (index == _currentPage)
+                                ? Colors.orange
+                                : Colors.grey.withOpacity(0.5)));
+                  })),
+            ],
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.end,
@@ -108,32 +101,29 @@ class _TipPageViewState extends State<TipPageView> {
                     child: AnimatedContainer(
                         alignment: Alignment.center,
                         padding: EdgeInsets.only(
-                            left: SizeConfig.heightMultiplier * 3.2,
-                            right: SizeConfig.heightMultiplier * 3.2,
-                            top: SizeConfig.heightMultiplier * 0.7,
-                            bottom: SizeConfig.heightMultiplier * 0.7),
+                            left: 30.h, right: 30.h, top: 7.h, bottom: 7.h),
                         duration: Duration(milliseconds: 300),
                         color: AppTheme.floatingColor,
                         child: (_currentPage == (_pages.length - 1))
                             ? Text(
                                 "START WRITING",
-                                style: TextStyle(
+                                style: GoogleFonts.lato(
                                   color: Colors.white,
-                                  fontSize: SizeConfig.textMultiplier * 2.3,
+                                  fontSize: 16.sp,
                                 ),
                               )
                             : Text(
                                 "NEXT TIP",
-                                style: TextStyle(
+                                style: GoogleFonts.lato(
                                   color: Colors.white,
-                                  fontSize: SizeConfig.textMultiplier * 2.3,
+                                  fontSize: 16.sp,
                                 ),
                               )),
                   ),
                 ],
               ),
               SizedBox(
-                height: SizeConfig.heightMultiplier * 4,
+                height: 38.h,
               ),
             ],
           )

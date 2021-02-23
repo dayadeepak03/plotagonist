@@ -3,8 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:plotagonist/Screen/genre_screen.dart';
-import 'package:plotagonist/Utils/size_config.dart';
 import 'package:plotagonist/Utils/styling.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ShareScreen extends StatefulWidget {
   @override
@@ -39,9 +39,7 @@ class _ShareScreenState extends State<ShareScreen> {
                                     builder: (_) => GenreScreen()));
                           },
                           child: Container(
-                              margin: EdgeInsets.only(
-                                  top: SizeConfig.heightMultiplier * 1,
-                                  right: SizeConfig.heightMultiplier * 1.5),
+                              margin: EdgeInsets.only(top: 8.h, right: 8.h),
                               child: Image(
                                 image: AssetImage('assets/images/close.png'),
                               )),
@@ -49,43 +47,44 @@ class _ShareScreenState extends State<ShareScreen> {
                       ],
                     ),
                     Padding(
-                      padding:
-                          EdgeInsets.only(top: SizeConfig.heightMultiplier * 1),
+                      padding: EdgeInsets.only(top: 8.h),
                       child: Image(
                         image: AssetImage('assets/images/image1.png'),
-                        width: MediaQuery.of(context).size.width,
-                        fit: BoxFit.cover,
+                        width: 376.w,
+                        height: 376.h,
+                        fit: BoxFit.fill,
                       ),
                     ),
                     Container(
-                      padding:
-                          EdgeInsets.only(top: SizeConfig.heightMultiplier * 2),
+                      padding: EdgeInsets.only(top: 30.h),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text(
                             'What An Amazing Cover!',
-                            style: TextStyle(
-                                fontSize: 22.0, fontWeight: FontWeight.bold),
+                            style: GoogleFonts.lato(
+                                fontSize: 22.sp,
+                                fontWeight: FontWeight.bold,
+                                letterSpacing: 1),
                           ),
                           SizedBox(
-                            height: SizeConfig.heightMultiplier * 2,
+                            height: 17.h,
                           ),
                           Text(
                             'Share it with your friends, so they’ll know',
                             style: GoogleFonts.lora(
-                                fontSize: 14.0, color: AppTheme.txtColor),
+                                fontSize: 14.sp, color: AppTheme.txtColor),
                           ),
                           SizedBox(
-                            height: SizeConfig.heightMultiplier * 0.5,
+                            height: 5.h,
                           ),
                           Text(
                             'what you are working on.',
                             style: GoogleFonts.lora(
-                                fontSize: 14.0, color: AppTheme.txtColor),
+                                fontSize: 14.sp, color: AppTheme.txtColor),
                           ),
                           SizedBox(
-                            height: SizeConfig.heightMultiplier * 2,
+                            height: 17.h,
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -101,17 +100,18 @@ class _ShareScreenState extends State<ShareScreen> {
                                       color: AppTheme.fcolor,
                                     ),
                                     SizedBox(
-                                      width: SizeConfig.heightMultiplier * 1,
+                                      width: 16.w,
                                     ),
                                     Text(
                                       'SHARE',
-                                      style: TextStyle(color: Colors.black),
+                                      style: GoogleFonts.lato(
+                                          fontSize: 15.sp, color: Colors.black),
                                     ),
                                   ],
                                 ),
                               ),
                               SizedBox(
-                                width: SizeConfig.heightMultiplier * 3,
+                                width: 21.w,
                               ),
                               RaisedButton(
                                 onPressed: () {},
@@ -124,11 +124,12 @@ class _ShareScreenState extends State<ShareScreen> {
                                       color: AppTheme.tcolor,
                                     ),
                                     SizedBox(
-                                      width: SizeConfig.heightMultiplier * 1,
+                                      width: 12.w,
                                     ),
                                     Text(
                                       'TWEET',
-                                      style: TextStyle(color: Colors.black),
+                                      style: GoogleFonts.lato(
+                                          fontSize: 15.sp, color: Colors.black),
                                     ),
                                   ],
                                 ),
@@ -136,7 +137,7 @@ class _ShareScreenState extends State<ShareScreen> {
                             ],
                           ),
                           SizedBox(
-                            height: SizeConfig.heightMultiplier * 2,
+                            height: 18.h,
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -147,18 +148,20 @@ class _ShareScreenState extends State<ShareScreen> {
                                 color: AppTheme.floatingColor,
                                 child: Container(
                                   padding: EdgeInsets.symmetric(
-                                      horizontal:
-                                          SizeConfig.heightMultiplier * 2),
-                                  child: Text(
-                                    'Save image to Camera Roll',
-                                    style: TextStyle(color: Colors.white),
+                                      horizontal: 15.w, vertical: 7.h),
+                                  child: Center(
+                                    child: Text(
+                                      'Save image to Camera Roll',
+                                      style: GoogleFonts.lato(
+                                          fontSize: 16.sp, color: Colors.white),
+                                    ),
                                   ),
                                 ),
                               ),
                             ],
                           ),
                           SizedBox(
-                            height: SizeConfig.heightMultiplier * 1.5,
+                            height: 17.h,
                           ),
                           GestureDetector(
                               onTap: () {
@@ -168,11 +171,11 @@ class _ShareScreenState extends State<ShareScreen> {
                                         builder: (_) => GenreScreen()));
                               },
                               child: Container(
-                                margin: EdgeInsets.only(
-                                    bottom: SizeConfig.heightMultiplier * 3),
                                 child: Text(
                                   'Not now',
-                                  style: TextStyle(fontStyle: FontStyle.italic),
+                                  style: GoogleFonts.lato(
+                                      fontSize: 15.sp,
+                                      fontStyle: FontStyle.italic),
                                 ),
                               ))
                         ],

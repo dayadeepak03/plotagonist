@@ -28,7 +28,7 @@ class _StartScreenState extends State<StartScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppTheme.clippathColor,
+      backgroundColor: AppTheme.appBackgroundColor,
       bottomNavigationBar: ConvexAppBar(
         backgroundColor: Colors.white,
         color: Colors.black,
@@ -76,8 +76,9 @@ class _StartScreenState extends State<StartScreen> {
           child: Column(
             children: [
               Container(
-                padding: EdgeInsets.all(SizeConfig.heightMultiplier * 1),
-                width: MediaQuery.of(context).size.width,
+                padding: EdgeInsets.only(
+                    left: 15.h, top: 8.h, bottom: 8.h, right: 15.h),
+                width: 1.sw,
                 color: AppTheme.appBackgroundColor,
                 child: Column(
                   children: [
@@ -86,32 +87,21 @@ class _StartScreenState extends State<StartScreen> {
                       children: [
                         Row(
                           children: [
-                            Container(
-                              padding: EdgeInsets.all(
-                                SizeConfig.heightMultiplier * 1,
-                              ),
-                              child: Row(
-                                children: [
-                                  Image(
-                                    image: AssetImage('assets/images/menu.png'),
-                                  ),
-                                  SizedBox(
-                                    width: SizeConfig.heightMultiplier * 2,
-                                  ),
-                                  Image(
-                                    image:
-                                        AssetImage('assets/images/search.png'),
-                                  ),
-                                  SizedBox(
-                                    width: SizeConfig.heightMultiplier * 2,
-                                  ),
-                                  Image(
-                                    image:
-                                        AssetImage('assets/images/cloud.png'),
-                                  ),
-                                ],
-                              ),
-                            )
+                            Image(
+                              image: AssetImage('assets/images/menu.png'),
+                            ),
+                            SizedBox(
+                              width: 20.w,
+                            ),
+                            Image(
+                              image: AssetImage('assets/images/search.png'),
+                            ),
+                            SizedBox(
+                              width: 20.w,
+                            ),
+                            Image(
+                              image: AssetImage('assets/images/cloud.png'),
+                            ),
                           ],
                         ),
                         Row(
@@ -123,7 +113,7 @@ class _StartScreenState extends State<StartScreen> {
                                     image: AssetImage('assets/images/logo.png'),
                                   ),
                                   SizedBox(
-                                    width: SizeConfig.heightMultiplier * 6,
+                                    width: 10.w,
                                   ),
                                 ],
                               ),
@@ -132,30 +122,19 @@ class _StartScreenState extends State<StartScreen> {
                         ),
                         Row(
                           children: [
-                            Container(
-                              padding: EdgeInsets.all(
-                                SizeConfig.heightMultiplier * 1,
-                              ),
-                              child: Row(
-                                children: [
-                                  Image(
-                                    image:
-                                        AssetImage('assets/images/money.png'),
-                                  ),
-                                  SizedBox(
-                                    width: SizeConfig.heightMultiplier * 0.5,
-                                  ),
-                                  Text('100'),
-                                  SizedBox(
-                                    width: SizeConfig.heightMultiplier * 1,
-                                  ),
-                                  Image(
-                                    image:
-                                        AssetImage('assets/images/combine.png'),
-                                  ),
-                                ],
-                              ),
-                            )
+                            Image(
+                              image: AssetImage('assets/images/money.png'),
+                            ),
+                            SizedBox(
+                              width: SizeConfig.heightMultiplier * 0.5,
+                            ),
+                            Text('100'),
+                            SizedBox(
+                              width: SizeConfig.heightMultiplier * 1,
+                            ),
+                            Image(
+                              image: AssetImage('assets/images/combine.png'),
+                            ),
                           ],
                         ),
                       ],
@@ -224,45 +203,49 @@ class _StartScreenState extends State<StartScreen> {
                               ),
                             ),
                             Container(
+                              color: widget.val == '1'
+                                  ? AppTheme.appBarColor
+                                  : Colors.white,
                               padding: EdgeInsets.only(
-                                left: SizeConfig.heightMultiplier * 2,
-                                top: SizeConfig.heightMultiplier * 1.5,
-                                right: SizeConfig.heightMultiplier * 2,
+                                left: 20.h,
+                                top: 11.h,
+                                right: 20.h,
                               ),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
                                     'A novel by',
-                                    style: TextStyle(color: AppTheme.txtColor),
+                                    style: GoogleFonts.lato(
+                                        color: AppTheme.txtColor,
+                                        fontSize: 12.sp,
+                                        letterSpacing: 0.55),
                                   ),
                                   SizedBox(
-                                    height: SizeConfig.heightMultiplier * 2,
+                                    height: 14.h,
                                   ),
                                   Row(
                                     children: [
                                       Container(
                                         padding: EdgeInsets.only(
-                                          right:
-                                              SizeConfig.heightMultiplier * 1,
+                                          right: 7.h,
                                         ),
                                         child: ClipOval(
                                           child: Image(
                                             image: AssetImage(
                                                 'assets/images/1.jpeg'),
-                                            height:
-                                                SizeConfig.imageSizeMultiplier *
-                                                    8,
+                                            height: 26.h,
+                                            width: 26.h,
                                           ),
                                         ),
                                       ),
                                       Text(
                                         'Jackie Willis',
-                                        style: TextStyle(
+                                        style: GoogleFonts.lato(
                                             color: AppTheme.txtColor,
-                                            fontSize: 21.0,
+                                            fontSize: 21.sp,
                                             fontWeight: FontWeight.w300,
-                                            letterSpacing: 1.5),
+                                            letterSpacing: 0.55),
                                       ),
                                     ],
                                   ),
@@ -280,39 +263,38 @@ class _StartScreenState extends State<StartScreen> {
                                           child: Image(
                                             image: AssetImage(
                                                 'assets/images/jennie.png'),
-                                            height:
-                                                SizeConfig.imageSizeMultiplier *
-                                                    8,
+                                            height: 26.h,
+                                            width: 26.h,
                                           ),
                                         ),
                                       ),
                                       Text(
                                         'Jennie Cooper',
-                                        style: TextStyle(
+                                        style: GoogleFonts.lato(
                                             color: AppTheme.txtColor,
-                                            fontSize: 21.0,
+                                            fontSize: 21.sp,
                                             fontWeight: FontWeight.w300,
-                                            letterSpacing: 1.5),
+                                            letterSpacing: 0.55),
                                       ),
                                     ],
                                   ),
                                   SizedBox(
-                                    height: SizeConfig.heightMultiplier * 2,
+                                    height: 16.h,
                                   ),
                                   Row(
                                     children: [
                                       Text(
                                         'With special thanks to',
-                                        style: TextStyle(
+                                        style: GoogleFonts.lato(
                                             color: AppTheme.txtColor,
-                                            fontSize: 14.0,
+                                            fontSize: 12.sp,
                                             fontWeight: FontWeight.w300,
-                                            letterSpacing: 1),
+                                            letterSpacing: 0.55),
                                       ),
                                     ],
                                   ),
                                   SizedBox(
-                                    height: SizeConfig.heightMultiplier * 1,
+                                    height: 10.h,
                                   ),
                                   Row(
                                     children: [
@@ -321,17 +303,14 @@ class _StartScreenState extends State<StartScreen> {
                                           children: [
                                             Container(
                                               padding: EdgeInsets.only(
-                                                right: SizeConfig
-                                                        .heightMultiplier *
-                                                    1,
+                                                right: 10.h,
                                               ),
                                               child: ClipOval(
                                                 child: Image(
                                                   image: AssetImage(
                                                       'assets/images/brian.png'),
-                                                  height: SizeConfig
-                                                          .imageSizeMultiplier *
-                                                      8,
+                                                  height: 28.h,
+                                                  width: 28.h,
                                                 ),
                                               ),
                                             ),
@@ -339,15 +318,15 @@ class _StartScreenState extends State<StartScreen> {
                                               children: [
                                                 Text(
                                                   'Brian Schuster',
-                                                  style:
-                                                      TextStyle(fontSize: 12.0),
+                                                  style: TextStyle(
+                                                      fontSize: 12.sp),
                                                 ),
                                                 Text(
                                                   '@brianschuster',
                                                   style: TextStyle(
                                                       color:
                                                           AppTheme.appBarCoin,
-                                                      fontSize: 12.0),
+                                                      fontSize: 11.sp),
                                                 ),
                                               ],
                                             ),
@@ -359,17 +338,14 @@ class _StartScreenState extends State<StartScreen> {
                                           children: [
                                             Container(
                                               padding: EdgeInsets.only(
-                                                right: SizeConfig
-                                                        .heightMultiplier *
-                                                    1,
+                                                right: 10.h,
                                               ),
                                               child: ClipOval(
                                                 child: Image(
                                                   image: AssetImage(
                                                       'assets/images/yuliya.png'),
-                                                  height: SizeConfig
-                                                          .imageSizeMultiplier *
-                                                      8,
+                                                  height: 28.h,
+                                                  width: 28.h,
                                                 ),
                                               ),
                                             ),
@@ -377,15 +353,15 @@ class _StartScreenState extends State<StartScreen> {
                                               children: [
                                                 Text(
                                                   'Yuliya Fjodor',
-                                                  style:
-                                                      TextStyle(fontSize: 12.0),
+                                                  style: TextStyle(
+                                                      fontSize: 12.sp),
                                                 ),
                                                 Text(
                                                   '@yuliyafjodor',
                                                   style: TextStyle(
                                                       color:
                                                           AppTheme.appBarCoin,
-                                                      fontSize: 12.0),
+                                                      fontSize: 11.sp),
                                                 ),
                                               ],
                                             ),
@@ -395,33 +371,31 @@ class _StartScreenState extends State<StartScreen> {
                                     ],
                                   ),
                                   SizedBox(
-                                    height: SizeConfig.heightMultiplier * 2,
+                                    height: 18.h,
                                   ),
                                   Text(
                                     'Summary',
-                                    style: TextStyle(
+                                    style: GoogleFonts.lato(
                                         color: AppTheme.txtColor,
-                                        fontSize: 24.0,
-                                        fontWeight: FontWeight.w100),
+                                        fontSize: 24.sp,
+                                        fontWeight: FontWeight.w200),
                                   ),
                                   SizedBox(
-                                    height: SizeConfig.heightMultiplier * 1,
+                                    height: 8.h,
                                   ),
                                   Container(
                                     padding: EdgeInsets.only(
-                                        bottom: widget.val == '1'
-                                            ? SizeConfig.heightMultiplier * 0.1
-                                            : SizeConfig.heightMultiplier *
-                                                6.5),
+                                        bottom:
+                                            widget.val == '1' ? 10.h : 140.h),
                                     child: Text(
                                       'A young girl wakes up one morning to find herself alone in her city. '
                                       'Is her Grandmother okay? Where did everyone disappear? And why does she '
                                       'feel that something is watching her? Something dark and out of '
                                       'this world...A modern take on Red Riding Hood.',
                                       style: GoogleFonts.lora(
-                                        color: AppTheme.txtColor,
-                                        fontSize: 17.0,
-                                      ),
+                                          color: AppTheme.txtColor,
+                                          fontSize: 17.sp,
+                                          fontWeight: FontWeight.w400),
                                     ),
                                   ),
                                 ],
@@ -431,39 +405,30 @@ class _StartScreenState extends State<StartScreen> {
                         ),
                         widget.val == '1'
                             ? Container(
-                                margin: EdgeInsets.only(
-                                    left: SizeConfig.heightMultiplier * 0.5,
-                                    bottom: SizeConfig.heightMultiplier * 2),
+                                color: AppTheme.appBarColor,
+                                margin:
+                                    EdgeInsets.only(left: 5.h, bottom: 20.h),
                                 child: ListView.builder(
                                   shrinkWrap: true,
                                   physics: ScrollPhysics(),
                                   scrollDirection: Axis.vertical,
-                                  itemCount: 1,
+                                  itemCount: 2,
                                   itemBuilder: (context, index) {
                                     return Container(
                                       child: Row(
                                         children: [
                                           Column(
                                             children: [
-                                              Container(
+                                              /* Container(
                                                 width: 2.0,
-                                                height: index == 0
-                                                    ? 1
-                                                    : SizeConfig
-                                                            .heightMultiplier *
-                                                        35,
+                                                height: index == 0 ? 1 : 100.h,
                                                 color: index == 0
                                                     ? Colors.transparent
                                                     : Colors.grey,
-                                              ),
+                                              ),*/
                                               Container(
                                                 margin: EdgeInsets.only(
-                                                    left: SizeConfig
-                                                            .heightMultiplier *
-                                                        1,
-                                                    right: SizeConfig
-                                                            .heightMultiplier *
-                                                        1),
+                                                    left: 10.w, right: 10.w),
                                                 padding: EdgeInsets.all(5),
                                                 decoration: BoxDecoration(
                                                     color: index == 0
@@ -478,9 +443,7 @@ class _StartScreenState extends State<StartScreen> {
                                               ),
                                               Container(
                                                 width: 2.0,
-                                                height: SizeConfig
-                                                        .heightMultiplier *
-                                                    35,
+                                                height: 0.3.sh,
                                                 color: Colors.grey,
                                               ),
                                             ],
@@ -514,9 +477,9 @@ class _StartScreenState extends State<StartScreen> {
                                                     ),
                                                     Container(
                                                       margin: EdgeInsets.only(
-                                                          top: 10.0),
+                                                          top: 10.h),
                                                       padding: EdgeInsets.only(
-                                                          right: 10.0),
+                                                          right: 10.h),
                                                       width:
                                                           MediaQuery.of(context)
                                                               .size
@@ -525,7 +488,7 @@ class _StartScreenState extends State<StartScreen> {
                                                         color: Colors.white,
                                                         borderRadius:
                                                             BorderRadius.all(
-                                                          Radius.circular(5.0),
+                                                          Radius.circular(5.h),
                                                         ),
                                                       ),
                                                       child: Column(
@@ -549,15 +512,14 @@ class _StartScreenState extends State<StartScreen> {
                                                                         image: AssetImage(
                                                                             'assets/images/1.jpeg'),
                                                                         height:
-                                                                            SizeConfig.imageSizeMultiplier *
-                                                                                7,
+                                                                            28.h,
+                                                                        width:
+                                                                            28.h,
                                                                       ),
                                                                     ),
                                                                   ),
                                                                   SizedBox(
-                                                                    width: SizeConfig
-                                                                            .heightMultiplier *
-                                                                        1,
+                                                                    width: 10.w,
                                                                   ),
                                                                   Column(
                                                                     crossAxisAlignment:
@@ -569,12 +531,12 @@ class _StartScreenState extends State<StartScreen> {
                                                                           Text(
                                                                             'Jackie Willis',
                                                                             style:
-                                                                                TextStyle(fontSize: 10),
+                                                                                TextStyle(fontSize: 10.sp),
                                                                           ),
                                                                           Text(
                                                                             ' @author',
                                                                             style:
-                                                                                TextStyle(fontSize: 10, color: AppTheme.appBarCoin),
+                                                                                TextStyle(fontSize: 10.sp, color: AppTheme.appBarCoin),
                                                                           ),
                                                                         ],
                                                                       ),
@@ -582,7 +544,7 @@ class _StartScreenState extends State<StartScreen> {
                                                                         '16:45 11/02/2019',
                                                                         style: TextStyle(
                                                                             fontSize:
-                                                                                10),
+                                                                                10.sp),
                                                                       ),
                                                                     ],
                                                                   )
@@ -597,9 +559,7 @@ class _StartScreenState extends State<StartScreen> {
                                                                         .grey,
                                                                   ),
                                                                   SizedBox(
-                                                                    width: SizeConfig
-                                                                            .heightMultiplier *
-                                                                        1,
+                                                                    width: 14.w,
                                                                   ),
                                                                   Icon(
                                                                     Icons

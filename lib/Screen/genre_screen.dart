@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:plotagonist/Models/genre_model.dart';
 import 'package:plotagonist/Screen/sub_genre_screen.dart';
-import 'package:plotagonist/Utils/size_config.dart';
 import 'package:plotagonist/Utils/styling.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class GenreScreen extends StatefulWidget {
   @override
@@ -28,7 +28,8 @@ class _GenreScreenState extends State<GenreScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       floatingActionButton: Container(
-        height: SizeConfig.heightMultiplier * 4.5,
+        height: 40.h,
+        width: 0.45.sw,
         child: FloatingActionButton.extended(
           backgroundColor:
               _selectedIndex >= 0 ? AppTheme.appBarCoin : Colors.transparent,
@@ -45,7 +46,8 @@ class _GenreScreenState extends State<GenreScreen> {
           },
           label: Text(
             'NEXT STEP',
-            style: TextStyle(
+            style: GoogleFonts.lato(
+                fontSize: 16.sp,
                 color: _selectedIndex >= 0 ? Colors.white : Colors.grey,
                 fontWeight: FontWeight.bold),
           ),
@@ -63,14 +65,14 @@ class _GenreScreenState extends State<GenreScreen> {
               },
               child: Text(
                 'Cancel',
-                style: TextStyle(color: AppTheme.txtappBar, fontSize: 18.0),
+                style: TextStyle(color: AppTheme.txtappBar, fontSize: 17.sp),
               ),
             ),
           ],
         ),
         middle: Text(
           'Choose Genre',
-          style: TextStyle(color: Colors.black, fontSize: 18.0),
+          style: TextStyle(color: Colors.black, fontSize: 17.sp),
         ),
         trailing: GestureDetector(
           onTap: () {
@@ -79,7 +81,7 @@ class _GenreScreenState extends State<GenreScreen> {
           },
           child: Text(
             'Skip',
-            style: TextStyle(color: AppTheme.txtappBar, fontSize: 18.0),
+            style: TextStyle(color: AppTheme.txtappBar, fontSize: 17.sp),
           ),
         ),
       ),
@@ -89,36 +91,13 @@ class _GenreScreenState extends State<GenreScreen> {
             children: [
               Stack(
                 children: [
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: Container(
-                      margin: EdgeInsets.only(
-                          left: SizeConfig.heightMultiplier * 1,
-                          top: SizeConfig.heightMultiplier * 1),
-                      height: SizeConfig.heightMultiplier * 5.5,
-                      width: SizeConfig.heightMultiplier * 5.5,
-                      child: ClipOval(
-                        child: Image(
-                          image: AssetImage('assets/images/6.jpeg'),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                  ),
                   Container(
-                    margin: EdgeInsets.only(
-                        left: SizeConfig.heightMultiplier * 4,
-                        right: SizeConfig.heightMultiplier * 2,
-                        top: SizeConfig.heightMultiplier * 1.2),
-                    padding: EdgeInsets.only(
-                        left: SizeConfig.heightMultiplier * 1.8,
-                        bottom: SizeConfig.heightMultiplier * 0.5),
+                    margin: EdgeInsets.only(left: 25.w, right: 13.w, top: 15.h),
+                    padding: EdgeInsets.only(left: 14.w, bottom: 10.h),
                     child: ClipPath(
                       clipper: CustomClipPath(),
                       child: Container(
-                        padding: EdgeInsets.all(
-                          SizeConfig.heightMultiplier * 1,
-                        ),
+                        padding: EdgeInsets.only(bottom: 10.h, left: 14.h),
                         decoration: BoxDecoration(
                           boxShadow: [
                             BoxShadow(
@@ -130,64 +109,61 @@ class _GenreScreenState extends State<GenreScreen> {
                           ],
                           color: AppTheme.clippathColor,
                         ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Align(
-                              alignment: Alignment.topLeft,
-                              child: Padding(
-                                padding: EdgeInsets.only(
-                                    left: SizeConfig.heightMultiplier * 3,
-                                    top: SizeConfig.heightMultiplier * 1),
-                                child: Text(
-                                  'What is the main genre of your plot?',
-                                  style: GoogleFonts.lora(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 14.0,
-                                      color: AppTheme.txtColor),
-                                ),
+                        child: Container(
+                          padding: EdgeInsets.only(
+                              left: 14.w, top: 8.h, bottom: 10.h),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'What is the main genre of your plot?',
+                                style: GoogleFonts.lora(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 14.sp,
+                                    color: AppTheme.txtColor),
                               ),
-                            ),
-                            Align(
-                              alignment: Alignment.topLeft,
-                              child: Padding(
-                                padding: EdgeInsets.only(
-                                    left: SizeConfig.heightMultiplier * 3,
-                                    top: SizeConfig.heightMultiplier * 0.5),
-                                child: Text(
-                                  'Please select one, so I can customise your experience. Click NEXT when you are done.',
-                                  style: GoogleFonts.lora(
-                                      fontSize: 12.0, color: AppTheme.txtColor),
-                                ),
+                              SizedBox(
+                                height: 5.h,
                               ),
-                            ),
-                          ],
+                              Text(
+                                'Please select one, so I can customise your experience. Click NEXT when you are done.',
+                                style: GoogleFonts.lora(
+                                    fontSize: 12.sp, color: AppTheme.txtColor),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: Container(
+                      margin: EdgeInsets.only(left: 14.w, top: 15.h),
+                      child: ClipOval(
+                        child: Image(
+                          image: AssetImage('assets/images/6.jpeg'),
+                          height: 34.h,
+                          width: 34.h,
+                          fit: BoxFit.fill,
                         ),
                       ),
                     ),
                   ),
                   Positioned(
-                    right: -2.0,
-                    top: -2.0,
-                    child: Container(
-                      padding:
-                          EdgeInsets.all(SizeConfig.heightMultiplier * 0.4),
-                      margin: EdgeInsets.only(
-                          top: SizeConfig.heightMultiplier * 0.6,
-                          right: SizeConfig.heightMultiplier * 1.5),
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle, color: Colors.black38),
-                      child: Icon(
-                        Icons.close,
-                        color: Colors.white,
-                        size: 15.0,
-                      ),
+                    right: 7.w,
+                    top: 13.h,
+                    child: Image(
+                      image: AssetImage('assets/images/close.png'),
+                      height: 20.h,
+                      width: 20.h,
+                      fit: BoxFit.cover,
                     ),
                   ),
                 ],
               ),
               Container(
-                margin: EdgeInsets.only(top: SizeConfig.heightMultiplier * 1),
+                margin: EdgeInsets.only(top: 10.h, bottom: 60.h),
                 child: ListView.builder(
                   shrinkWrap: true,
                   physics: BouncingScrollPhysics(),
@@ -196,17 +172,15 @@ class _GenreScreenState extends State<GenreScreen> {
                   itemBuilder: (context, index) {
                     GenreModels genre = genreList[index];
                     return Container(
-                      margin: EdgeInsets.symmetric(
-                          vertical: SizeConfig.heightMultiplier * 0.5,
-                          horizontal: SizeConfig.heightMultiplier * 2),
-                      padding: EdgeInsets.only(
-                          top: SizeConfig.heightMultiplier * 1,
-                          bottom: SizeConfig.heightMultiplier * 1),
+                      margin:
+                          EdgeInsets.symmetric(vertical: 6.h, horizontal: 23.w),
+                      padding:
+                          EdgeInsets.only(top: 10.h, bottom: 10.h, left: 10.h),
                       decoration: BoxDecoration(
                           color: _selectedIndex == index
                               ? AppTheme.selectIndex
                               : AppTheme.clippathColor,
-                          borderRadius: BorderRadius.all(Radius.circular(5.0))),
+                          borderRadius: BorderRadius.all(Radius.circular(5.h))),
                       width: MediaQuery.of(context).size.width,
                       child: ListTile(
                         leading: ClipOval(
@@ -218,9 +192,9 @@ class _GenreScreenState extends State<GenreScreen> {
                           ),
                         ),
                         title: Text(
-                          genre.genreName,
-                          style: TextStyle(
-                              fontSize: 14.0, color: AppTheme.txtColor),
+                          genre.genreName.toUpperCase(),
+                          style: GoogleFonts.lato(
+                              fontSize: 14.sp, color: AppTheme.txtColor),
                         ),
                         selected: index == _selectedIndex,
                         onTap: () {

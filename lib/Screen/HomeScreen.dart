@@ -231,21 +231,23 @@ class _HomeScreenState extends State<HomeScreen> {
                                       BorderRadius.all(Radius.circular(12.h)),
                                   color: Colors.white),
                               child: Center(
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Badge(
-                                      padding: EdgeInsets.all(5.h),
-                                      badgeColor: AppTheme.notifyColor,
-                                      badgeContent: Text(''),
-                                      child: Text(
-                                        'WRITING PROMPTS ',
-                                        style: GoogleFonts.lato(
-                                            fontSize: 11.5.nsp,
-                                            color: AppTheme.txtColor),
+                                child: Container(
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Badge(
+                                        padding: EdgeInsets.all(4.h),
+                                        badgeColor: AppTheme.notifyColor,
+                                        badgeContent: Text(''),
+                                        child: Text(
+                                          'WRITING PROMPTS ',
+                                          style: GoogleFonts.lato(
+                                              fontSize: 11.5.nsp,
+                                              color: AppTheme.txtColor),
+                                        ),
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
@@ -274,7 +276,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Badge(
-                                      padding: EdgeInsets.all(5.h),
+                                      padding: EdgeInsets.all(4.h),
                                       badgeColor: AppTheme.notifyColor,
                                       badgeContent: Text(''),
                                       child: Text(

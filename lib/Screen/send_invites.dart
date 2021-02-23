@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:plotagonist/Screen/tip_pageview.dart';
-import 'package:plotagonist/Utils/size_config.dart';
 import 'package:plotagonist/Utils/styling.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SendInvites extends StatefulWidget {
   @override
@@ -33,14 +33,14 @@ class _SendInvitesState extends State<SendInvites> {
               },
               child: Text(
                 'Cancel',
-                style: TextStyle(color: AppTheme.txtappBar, fontSize: 18.0),
+                style: TextStyle(color: AppTheme.txtappBar, fontSize: 17.sp),
               ),
             ),
           ],
         ),
         middle: Text(
           'Send Invites',
-          style: TextStyle(color: Colors.black, fontSize: 18.0),
+          style: TextStyle(color: Colors.black, fontSize: 17.sp),
         ),
         trailing: GestureDetector(
           onTap: () {
@@ -49,7 +49,7 @@ class _SendInvitesState extends State<SendInvites> {
           },
           child: Text(
             'Skip',
-            style: TextStyle(color: AppTheme.txtappBar, fontSize: 18.0),
+            style: TextStyle(color: AppTheme.txtappBar, fontSize: 17.sp),
           ),
         ),
       ),
@@ -59,38 +59,16 @@ class _SendInvitesState extends State<SendInvites> {
             children: [
               Stack(
                 children: [
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: Container(
-                      margin: EdgeInsets.only(
-                          left: SizeConfig.heightMultiplier * 1,
-                          top: SizeConfig.heightMultiplier * 1),
-                      height: SizeConfig.heightMultiplier * 5.5,
-                      width: SizeConfig.heightMultiplier * 5.5,
-                      child: ClipOval(
-                        child: Image(
-                          image: AssetImage('assets/images/6.jpeg'),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                  ),
                   Container(
-                    margin: EdgeInsets.only(
-                        left: SizeConfig.heightMultiplier * 4,
-                        right: SizeConfig.heightMultiplier * 2,
-                        top: SizeConfig.heightMultiplier * 1.2),
-                    padding: EdgeInsets.only(
-                        left: SizeConfig.heightMultiplier * 1.8,
-                        bottom: SizeConfig.heightMultiplier * 0.5),
+                    margin: EdgeInsets.only(left: 25.w, right: 13.w, top: 15.h),
+                    padding: EdgeInsets.only(left: 14.w, bottom: 10.h),
                     child: ClipPath(
                       clipper: CustomClipPath(),
                       child: Container(
-                        padding: EdgeInsets.all(
-                          SizeConfig.heightMultiplier * 1,
-                        ),
+                        padding: EdgeInsets.only(
+                            bottom: 10.h, left: 15.h, right: 15.h),
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5.0),
+                          borderRadius: BorderRadius.circular(5.h),
                           boxShadow: [
                             BoxShadow(
                               color: Colors.black,
@@ -102,63 +80,59 @@ class _SendInvitesState extends State<SendInvites> {
                           ],
                           color: AppTheme.appBarColor,
                         ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Align(
-                              alignment: Alignment.topLeft,
-                              child: Padding(
-                                padding: EdgeInsets.only(
-                                    left: SizeConfig.heightMultiplier * 3,
-                                    right: SizeConfig.heightMultiplier * 4,
-                                    top: SizeConfig.heightMultiplier * 1),
-                                child: Text(
-                                  'Do you want to collaborate with someone on this story?',
-                                  style: GoogleFonts.lora(
-                                      wordSpacing: 3,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 14.0,
-                                      color: AppTheme.txtColor),
-                                ),
+                        child: Container(
+                          padding: EdgeInsets.only(
+                              left: 14.w, top: 8.h, bottom: 10.h),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Do you want to collaborate with someone on this story?',
+                                style: GoogleFonts.lora(
+                                    wordSpacing: 3,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 14.sp,
+                                    color: AppTheme.txtColor),
                               ),
-                            ),
-                            Align(
-                              alignment: Alignment.topLeft,
-                              child: Padding(
-                                padding: EdgeInsets.only(
-                                    left: SizeConfig.heightMultiplier * 3,
-                                    top: SizeConfig.heightMultiplier * 0.5),
-                                child: Text(
-                                  'You can invite Co-authors, Editors, Proofreaders who can '
-                                  'actively edit your story, or your fans, friends or family to help you with ideas via comments.',
-                                  style: GoogleFonts.lora(
-                                      wordSpacing: 2,
-                                      fontSize: 12.0,
-                                      color: AppTheme.txtColor),
-                                ),
+                              SizedBox(
+                                height: 5.h,
                               ),
-                            ),
-                          ],
+                              Text(
+                                'You can invite Co-authors, Editors, Proofreaders who can '
+                                'actively edit your story, or your fans, friends or family to help you with ideas via comments.',
+                                style: GoogleFonts.lora(
+                                    wordSpacing: 2,
+                                    fontSize: 12.sp,
+                                    color: AppTheme.txtColor),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: Container(
+                      margin: EdgeInsets.only(left: 14.w, top: 15.h),
+                      child: ClipOval(
+                        child: Image(
+                          image: AssetImage('assets/images/6.jpeg'),
+                          height: 34.h,
+                          width: 34.h,
+                          fit: BoxFit.fill,
                         ),
                       ),
                     ),
                   ),
                   Positioned(
-                    right: -2.0,
-                    top: -2.0,
-                    child: Container(
-                      padding:
-                          EdgeInsets.all(SizeConfig.heightMultiplier * 0.4),
-                      margin: EdgeInsets.only(
-                          top: SizeConfig.heightMultiplier * 0.6,
-                          right: SizeConfig.heightMultiplier * 1.5),
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle, color: Colors.black38),
-                      child: Icon(
-                        Icons.close,
-                        color: Colors.white,
-                        size: 15.0,
-                      ),
+                    right: 7.w,
+                    top: 10.h,
+                    child: Image(
+                      image: AssetImage('assets/images/close.png'),
+                      height: 20.h,
+                      width: 20.h,
+                      fit: BoxFit.cover,
                     ),
                   ),
                 ],
@@ -171,28 +145,24 @@ class _SendInvitesState extends State<SendInvites> {
                 itemBuilder: (context, index) {
                   return Container(
                     margin: EdgeInsets.only(
-                        top: index == 0
-                            ? SizeConfig.heightMultiplier * 1
-                            : SizeConfig.heightMultiplier * 0,
-                        left: 20.0,
-                        right: 20.0,
-                        bottom: index == listLength - 1
-                            ? SizeConfig.heightMultiplier * 2
-                            : SizeConfig.heightMultiplier * 0.5),
+                        top: index == 0 ? 10.h : 0.h,
+                        left: 18.h,
+                        right: 18.h,
+                        bottom: index == listLength - 1 ? 20.h : 5.h),
                     child: Column(
                       children: [
                         TextFormField(
                           autofocus: true,
-                          style: TextStyle(fontSize: 14.0),
+                          style: TextStyle(fontSize: 14.sp),
                           decoration: new InputDecoration(
-                            contentPadding: const EdgeInsets.symmetric(
-                                vertical: 10.0, horizontal: 0.0),
+                            contentPadding: EdgeInsets.symmetric(
+                                vertical: 10.h, horizontal: 0.0),
                             hintText: 'e.g. Stephen King',
-                            hintStyle:
-                                TextStyle(color: Colors.grey, fontSize: 16.0),
+                            hintStyle: GoogleFonts.lato(
+                                color: Colors.grey, fontSize: 16.sp),
                             labelText: 'THEIR NAME',
-                            labelStyle: TextStyle(
-                                color: AppTheme.appBarCoin, fontSize: 12.0),
+                            labelStyle: GoogleFonts.lato(
+                                color: AppTheme.appBarCoin, fontSize: 14.sp),
                             fillColor: AppTheme.appBarCoin,
                             focusedBorder: UnderlineInputBorder(
                               borderSide:
@@ -204,16 +174,16 @@ class _SendInvitesState extends State<SendInvites> {
                           },
                         ),
                         TextFormField(
-                          style: TextStyle(fontSize: 14.0),
+                          style: TextStyle(fontSize: 14.sp),
                           decoration: new InputDecoration(
-                            contentPadding: const EdgeInsets.symmetric(
-                                vertical: 10.0, horizontal: 0.0),
+                            contentPadding: EdgeInsets.symmetric(
+                                vertical: 10.h, horizontal: 0.0),
                             hintText: 'e.g. they@theiremail.com',
                             hintStyle:
-                                TextStyle(color: Colors.grey, fontSize: 16.0),
+                                TextStyle(color: Colors.grey, fontSize: 16.sp),
                             labelText: 'THEIR EMAIL',
                             labelStyle: TextStyle(
-                                color: AppTheme.appBarCoin, fontSize: 12.0),
+                                color: AppTheme.appBarCoin, fontSize: 14.sp),
                             fillColor: AppTheme.appBarCoin,
                             focusedBorder: UnderlineInputBorder(
                               borderSide:
@@ -225,16 +195,16 @@ class _SendInvitesState extends State<SendInvites> {
                           },
                         ),
                         TextFormField(
-                          style: TextStyle(fontSize: 14.0),
+                          style: TextStyle(fontSize: 14.sp),
                           decoration: new InputDecoration(
-                            contentPadding: const EdgeInsets.symmetric(
-                                vertical: 10.0, horizontal: 0.0),
+                            contentPadding: EdgeInsets.symmetric(
+                                vertical: 10.h, horizontal: 0.0),
                             hintText: 'Co-Author',
                             hintStyle:
-                                TextStyle(color: Colors.grey, fontSize: 16.0),
+                                TextStyle(color: Colors.grey, fontSize: 16.sp),
                             labelText: 'THEIR ROLE',
                             labelStyle: TextStyle(
-                                color: AppTheme.appBarCoin, fontSize: 12.0),
+                                color: AppTheme.appBarCoin, fontSize: 12.sp),
                             fillColor: AppTheme.appBarCoin,
                             focusedBorder: UnderlineInputBorder(
                               borderSide:
@@ -246,21 +216,26 @@ class _SendInvitesState extends State<SendInvites> {
                           },
                         ),
                         SizedBox(
-                          height: SizeConfig.heightMultiplier * 1.5,
+                          height: 20.h,
                         ),
                         GestureDetector(
                             onTap: () {
                               showAlertDialog(context);
                             },
-                            child: Text('Edit Permissions')),
+                            child: Text(
+                              'Edit permissions',
+                              style: GoogleFonts.lato(
+                                  color: AppTheme.txtColor,
+                                  fontSize: 15.sp,
+                                  fontStyle: FontStyle.italic),
+                            )),
                       ],
                     ),
                   );
                 },
               ),
               Container(
-                margin:
-                    EdgeInsets.only(bottom: SizeConfig.heightMultiplier * 4),
+                margin: EdgeInsets.only(bottom: 40.h),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -270,16 +245,18 @@ class _SendInvitesState extends State<SendInvites> {
                       },
                       child: Container(
                         padding: EdgeInsets.symmetric(
-                            horizontal: 40.0, vertical: 7.0),
+                            horizontal: 35.h, vertical: 6.h),
                         decoration: BoxDecoration(
                             borderRadius:
-                                BorderRadius.all(Radius.circular(5.0)),
+                                BorderRadius.all(Radius.circular(5.h)),
                             color: AppTheme.appBarCoin,
                             border: Border.all(color: AppTheme.appBarCoin)),
                         child: Text(
                           'ADD MORE',
-                          style: TextStyle(
-                              color: Colors.white, fontWeight: FontWeight.bold),
+                          style: GoogleFonts.lato(
+                              fontWeight: FontWeight.w400,
+                              color: Colors.white,
+                              fontSize: 16.sp),
                         ),
                       ),
                     ),
@@ -290,7 +267,7 @@ class _SendInvitesState extends State<SendInvites> {
                       },
                       child: Container(
                         padding: EdgeInsets.symmetric(
-                            horizontal: 30.0, vertical: 7.0),
+                            horizontal: 25.h, vertical: 6.h),
                         decoration: BoxDecoration(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(5.0)),
@@ -298,8 +275,10 @@ class _SendInvitesState extends State<SendInvites> {
                             border: Border.all(color: AppTheme.appBarCoin)),
                         child: Text(
                           'SEND INVITES',
-                          style: TextStyle(
-                              color: Colors.white, fontWeight: FontWeight.bold),
+                          style: GoogleFonts.lato(
+                              fontWeight: FontWeight.w400,
+                              color: Colors.white,
+                              fontSize: 16.sp),
                         ),
                       ),
                     ),
@@ -358,9 +337,8 @@ showAlertDialog(BuildContext context) {
               child: Center(
                 child: Container(
                   width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height -
-                      SizeConfig.heightMultiplier * 8,
-                  padding: EdgeInsets.all(20.0),
+                  height: 0.9.sh,
+                  padding: EdgeInsets.all(30.h),
                   color: Colors.white,
                   child: Stack(
                     children: [
@@ -374,8 +352,9 @@ showAlertDialog(BuildContext context) {
                               children: [
                                 Text(
                                   'Read only',
-                                  style: TextStyle(
-                                      fontSize: 17.0, color: AppTheme.txtColor),
+                                  style: GoogleFonts.lato(
+                                      fontSize: 16.sp,
+                                      color: AppTheme.txtColor),
                                 ),
                                 CupertinoSwitch(
                                     value: isRead,
@@ -387,15 +366,16 @@ showAlertDialog(BuildContext context) {
                               ],
                             ),
                             SizedBox(
-                              height: SizeConfig.heightMultiplier * 3,
+                              height: 35.h,
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
                                   'Can Comment',
-                                  style: TextStyle(
-                                      fontSize: 17.0, color: AppTheme.txtColor),
+                                  style: GoogleFonts.lato(
+                                      fontSize: 16.sp,
+                                      color: AppTheme.txtColor),
                                 ),
                                 CupertinoSwitch(
                                     value: isComment,
@@ -407,15 +387,16 @@ showAlertDialog(BuildContext context) {
                               ],
                             ),
                             SizedBox(
-                              height: SizeConfig.heightMultiplier * 3,
+                              height: 35.h,
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
                                   'Can create entries',
-                                  style: TextStyle(
-                                      fontSize: 17.0, color: AppTheme.txtColor),
+                                  style: GoogleFonts.lato(
+                                      fontSize: 16.sp,
+                                      color: AppTheme.txtColor),
                                 ),
                                 CupertinoSwitch(
                                     value: isCreate,
@@ -427,15 +408,16 @@ showAlertDialog(BuildContext context) {
                               ],
                             ),
                             SizedBox(
-                              height: SizeConfig.heightMultiplier * 3,
+                              height: 35.h,
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
                                   'Can edit entries',
-                                  style: TextStyle(
-                                      fontSize: 17.0, color: AppTheme.txtColor),
+                                  style: GoogleFonts.lato(
+                                      fontSize: 16.sp,
+                                      color: AppTheme.txtColor),
                                 ),
                                 CupertinoSwitch(
                                     value: isEdit,
@@ -447,15 +429,16 @@ showAlertDialog(BuildContext context) {
                               ],
                             ),
                             SizedBox(
-                              height: SizeConfig.heightMultiplier * 3,
+                              height: 35.h,
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
                                   'Can delete entries',
-                                  style: TextStyle(
-                                      fontSize: 17.0, color: AppTheme.txtColor),
+                                  style: GoogleFonts.lato(
+                                      fontSize: 16.sp,
+                                      color: AppTheme.txtColor),
                                 ),
                                 CupertinoSwitch(
                                     value: isDelete,
@@ -475,7 +458,7 @@ showAlertDialog(BuildContext context) {
                           Text(
                             'Collaborator Permissions',
                             style: TextStyle(
-                                fontSize: 17, fontWeight: FontWeight.bold),
+                                fontSize: 17.sp, fontWeight: FontWeight.bold),
                           ),
                         ],
                       ),
@@ -487,8 +470,7 @@ showAlertDialog(BuildContext context) {
                             Navigator.pop(context);
                           },
                           child: Container(
-                            padding: EdgeInsets.all(
-                                SizeConfig.heightMultiplier * 0.6),
+                            padding: EdgeInsets.all(6.h),
                             decoration: BoxDecoration(
                                 shape: BoxShape.circle, color: Colors.black38),
                             child: Icon(
@@ -500,9 +482,9 @@ showAlertDialog(BuildContext context) {
                         ),
                       ),
                       Positioned(
-                        bottom: SizeConfig.heightMultiplier * 1,
-                        left: SizeConfig.heightMultiplier * 1,
-                        right: SizeConfig.heightMultiplier * 1,
+                        bottom: 10.h,
+                        left: 10.h,
+                        right: 10.h,
                         child: GestureDetector(
                           onTap: () {
                             Navigator.pop(context);
@@ -512,18 +494,17 @@ showAlertDialog(BuildContext context) {
                             children: [
                               Container(
                                 padding: EdgeInsets.symmetric(
-                                    horizontal: 40.0, vertical: 7.0),
+                                    horizontal: 40.h, vertical: 7.h),
                                 decoration: BoxDecoration(
                                     borderRadius:
-                                        BorderRadius.all(Radius.circular(5.0)),
+                                        BorderRadius.all(Radius.circular(5.h)),
                                     color: AppTheme.appBarCoin,
                                     border:
                                         Border.all(color: AppTheme.appBarCoin)),
                                 child: Text(
                                   'SAVE SELECTION',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold),
+                                  style: GoogleFonts.lato(
+                                      fontSize: 16.sp, color: Colors.white),
                                 ),
                               ),
                             ],

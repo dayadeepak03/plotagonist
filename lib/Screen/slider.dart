@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:video_player/video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:plotagonist/Utils/size_config.dart';
 
 class SliderPage extends StatefulWidget {
   final String title;
@@ -35,61 +34,56 @@ class _SliderPageState extends State<SliderPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.only(
-        left: ScreenUtil().setWidth(30),
-        right: ScreenUtil().setWidth(30),
-      ),
-      child: ListView(
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              SizedBox(
-                height: SizeConfig.heightMultiplier * 5,
-              ),
-              Container(
-                height: MediaQuery.of(context).size.height / 1.7,
-                color: Colors.black,
-                child: ClipRRect(
-                  child: Center(
-                    child: Flexible(
-                      child: FlickVideoPlayer(
-                        flickManager: flickManager,
-                      ),
+    return Scaffold(
+      body: Container(
+        margin: EdgeInsets.only(top: 70.h),
+        padding: EdgeInsets.only(
+          left: 30.h,
+          right: 30.h,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Container(
+              height: 470.h,
+              width: 1.sw,
+              color: Colors.black,
+              child: ClipRRect(
+                child: Center(
+                  child: Flexible(
+                    child: FlickVideoPlayer(
+                      flickManager: flickManager,
                     ),
                   ),
                 ),
               ),
-              SizedBox(
-                height: SizeConfig.heightMultiplier * 3,
+            ),
+            SizedBox(
+              height: 38.h,
+            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Text(
+                widget.title,
+                style: GoogleFonts.lato(
+                    fontSize: 22.sp,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 1),
+                textAlign: TextAlign.left,
               ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.pop(context);
-                },
-                child: Text(
-                  widget.title,
-                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-                  textAlign: TextAlign.left,
-                ),
-              ),
-              SizedBox(
-                height: SizeConfig.heightMultiplier * 2,
-              ),
-              Text(
-                widget.description,
-                style: GoogleFonts.lora(
-                  height: 1.4,
-                  fontSize: SizeConfig.textMultiplier * 1.7,
-                ),
-              ),
-              SizedBox(
-                height: SizeConfig.heightMultiplier * 6,
-              ),
-            ],
-          ),
-        ],
+            ),
+            SizedBox(
+              height: 17.h,
+            ),
+            Text(
+              widget.description,
+              style: GoogleFonts.lora(
+                  fontSize: 14.sp, fontWeight: FontWeight.w400),
+            ),
+          ],
+        ),
       ),
     );
   }
