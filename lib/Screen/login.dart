@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/screen_util.dart';
 import 'package:plotagonist/Screen/HomeScreen.dart';
+import 'package:plotagonist/Screen/choose_muse_screen.dart';
 import 'package:plotagonist/Screen/finish_social_register.dart';
 import 'package:plotagonist/Screen/forgot_password.dart';
 import 'package:plotagonist/Screen/register.dart';
@@ -265,10 +266,14 @@ class NewForm extends StatelessWidget {
                     materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     padding: EdgeInsets.all(0),
                     onPressed: () {
+                      // Navigator.push(
+                      //     context,
+                      //     MaterialPageRoute(
+                      //         builder: (context) => ForgotPassword()));
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => ForgotPassword()));
+                              builder: (context) => ChooseMuse()));
                     },
                     height: ScreenUtil().setHeight(30),
                     child: Text(
