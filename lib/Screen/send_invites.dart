@@ -13,6 +13,13 @@ class SendInvites extends StatefulWidget {
 class _SendInvitesState extends State<SendInvites> {
   int listLength = 1;
   bool _lights = true;
+  bool visibilityPopUp = true;
+
+  void _changed(bool visibility) {
+    setState(() {
+      visibilityPopUp = visibility;
+    });
+  }
 
   _UpdateList() {
     setState(() {
@@ -57,86 +64,94 @@ class _SendInvitesState extends State<SendInvites> {
         children: [
           Column(
             children: [
-              Stack(
-                children: [
-                  Container(
-                    margin: EdgeInsets.only(left: 25.w, right: 13.w, top: 15.h),
-                    padding: EdgeInsets.only(left: 14.w, bottom: 10.h),
-                    child: ClipPath(
-                      clipper: CustomClipPath(),
-                      child: Container(
-                        padding: EdgeInsets.only(
-                            bottom: 10.h, left: 15.h, right: 15.h),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5.h),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black,
-                              blurRadius: 10.0,
-                              spreadRadius: 5.0,
-                              offset: Offset(
-                                  8.0, 8.0), // shadow direction: bottom right
-                            )
-                          ],
-                          color: AppTheme.appBarColor,
-                        ),
-                        child: Container(
-                          padding: EdgeInsets.only(
-                              left: 14.w, top: 8.h, bottom: 10.h),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Do you want to collaborate with someone on this story?',
-                                style: GoogleFonts.lora(
-                                    wordSpacing: 3,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 14.sp,
-                                    color: AppTheme.txtColor),
+              visibilityPopUp
+                  ? Stack(
+                      children: [
+                        Container(
+                          margin: EdgeInsets.only(
+                              left: 25.w, right: 13.w, top: 15.h),
+                          padding: EdgeInsets.only(left: 14.w, bottom: 10.h),
+                          child: ClipPath(
+                            clipper: CustomClipPath(),
+                            child: Container(
+                              padding: EdgeInsets.only(
+                                  bottom: 10.h, left: 15.h, right: 15.h),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(5.h),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black,
+                                    blurRadius: 10.0,
+                                    spreadRadius: 5.0,
+                                    offset: Offset(8.0,
+                                        8.0), // shadow direction: bottom right
+                                  )
+                                ],
+                                color: AppTheme.appBarColor,
                               ),
-                              SizedBox(
-                                height: 5.h,
+                              child: Container(
+                                padding: EdgeInsets.only(
+                                    left: 14.w, top: 8.h, bottom: 10.h),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Do you want to collaborate with someone on this story?',
+                                      style: GoogleFonts.lora(
+                                          wordSpacing: 3,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 14.sp,
+                                          color: AppTheme.txtColor),
+                                    ),
+                                    SizedBox(
+                                      height: 5.h,
+                                    ),
+                                    Text(
+                                      'You can invite Co-authors, Editors, Proofreaders who can '
+                                      'actively edit your story, or your fans, friends or family to help you with ideas via comments.',
+                                      style: GoogleFonts.lora(
+                                          wordSpacing: 2,
+                                          fontSize: 12.sp,
+                                          color: AppTheme.txtColor),
+                                    ),
+                                  ],
+                                ),
                               ),
-                              Text(
-                                'You can invite Co-authors, Editors, Proofreaders who can '
-                                'actively edit your story, or your fans, friends or family to help you with ideas via comments.',
-                                style: GoogleFonts.lora(
-                                    wordSpacing: 2,
-                                    fontSize: 12.sp,
-                                    color: AppTheme.txtColor),
-                              ),
-                            ],
+                            ),
                           ),
                         ),
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: Container(
-                      margin: EdgeInsets.only(left: 14.w, top: 15.h),
-                      child: ClipOval(
-                        child: Image(
-                          image: AssetImage('assets/images/6.jpeg'),
-                          height: 34.h,
-                          width: 34.h,
-                          fit: BoxFit.fill,
+                        Align(
+                          alignment: Alignment.topLeft,
+                          child: Container(
+                            margin: EdgeInsets.only(left: 14.w, top: 15.h),
+                            child: ClipOval(
+                              child: Image(
+                                image: AssetImage('assets/images/6.jpeg'),
+                                height: 34.h,
+                                width: 34.h,
+                                fit: BoxFit.fill,
+                              ),
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    right: 7.w,
-                    top: 10.h,
-                    child: Image(
-                      image: AssetImage('assets/images/close.png'),
-                      height: 20.h,
-                      width: 20.h,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ],
-              ),
+                        Positioned(
+                          right: 7.w,
+                          top: 10.h,
+                          child: GestureDetector(
+                            onTap: () {
+                              _changed(false);
+                            },
+                            child: Image(
+                              image: AssetImage('assets/images/close.png'),
+                              height: 20.h,
+                              width: 20.h,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                      ],
+                    )
+                  : Container(),
               ListView.builder(
                 shrinkWrap: true,
                 physics: BouncingScrollPhysics(),

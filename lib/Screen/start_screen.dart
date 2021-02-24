@@ -20,9 +20,7 @@ class StartScreen extends StatefulWidget {
 class _StartScreenState extends State<StartScreen> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    print(widget.val.toString());
   }
 
   @override

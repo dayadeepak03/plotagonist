@@ -18,12 +18,18 @@ class SubGenreScreen extends StatefulWidget {
 class _SubGenreScreenState extends State<SubGenreScreen> {
   int _selectedIndex = -1;
   Color color;
+  bool visibilityPopUp = true;
+
+  void _changed(bool visibility) {
+    setState(() {
+      visibilityPopUp = visibility;
+    });
+  }
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    print(widget.genre);
     color = Colors.transparent;
   }
 
@@ -89,80 +95,90 @@ class _SubGenreScreenState extends State<SubGenreScreen> {
         children: [
           Column(
             children: [
-              Stack(
-                children: [
-                  Container(
-                    margin: EdgeInsets.only(left: 25.w, right: 13.w, top: 15.h),
-                    padding: EdgeInsets.only(left: 14.w, bottom: 10.h),
-                    child: ClipPath(
-                      clipper: CustomClipPath(),
-                      child: Container(
-                        padding: EdgeInsets.only(bottom: 10.h, left: 14.h),
-                        decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black,
-                              blurRadius: 10.0,
-                              spreadRadius: 5.0,
-                              offset: Offset(
-                                  8.0, 8.0), // shadow direction: bottom right
-                            )
-                          ],
-                          color: AppTheme.appBarColor,
-                        ),
-                        child: Container(
-                          padding: EdgeInsets.only(
-                              left: 14.w, top: 8.h, bottom: 10.h),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'What is the subgenre of your ${widget.genre.toString().toLowerCase()}?',
-                                style: GoogleFonts.lora(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 14.sp,
-                                    color: AppTheme.txtColor),
+              visibilityPopUp
+                  ? Stack(
+                      children: [
+                        Container(
+                          margin: EdgeInsets.only(
+                              left: 25.w, right: 13.w, top: 15.h),
+                          padding: EdgeInsets.only(left: 14.w, bottom: 10.h),
+                          child: ClipPath(
+                            clipper: CustomClipPath(),
+                            child: Container(
+                              padding:
+                                  EdgeInsets.only(bottom: 10.h, left: 14.h),
+                              decoration: BoxDecoration(
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black,
+                                    blurRadius: 10.0,
+                                    spreadRadius: 5.0,
+                                    offset: Offset(8.0,
+                                        8.0), // shadow direction: bottom right
+                                  )
+                                ],
+                                color: AppTheme.appBarColor,
                               ),
-                              SizedBox(
-                                height: 5.h,
+                              child: Container(
+                                padding: EdgeInsets.only(
+                                    left: 14.w, top: 8.h, bottom: 10.h),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'What is the subgenre of your ${widget.genre.toString().toLowerCase()}?',
+                                      style: GoogleFonts.lora(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 14.sp,
+                                          color: AppTheme.txtColor),
+                                    ),
+                                    SizedBox(
+                                      height: 5.h,
+                                    ),
+                                    Text(
+                                      'Please select one, so I can show you genre relevant tips. Click NEXT when you are done.',
+                                      style: GoogleFonts.lora(
+                                          fontSize: 12.sp,
+                                          color: AppTheme.txtColor),
+                                    ),
+                                  ],
+                                ),
                               ),
-                              Text(
-                                'Please select one, so I can show you genre relevant tips. Click NEXT when you are done.',
-                                style: GoogleFonts.lora(
-                                    fontSize: 12.sp, color: AppTheme.txtColor),
-                              ),
-                            ],
+                            ),
                           ),
                         ),
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: Container(
-                      margin: EdgeInsets.only(left: 14.w, top: 15.h),
-                      child: ClipOval(
-                        child: Image(
-                          image: AssetImage('assets/images/6.jpeg'),
-                          height: 34.h,
-                          width: 34.h,
-                          fit: BoxFit.fill,
+                        Align(
+                          alignment: Alignment.topLeft,
+                          child: Container(
+                            margin: EdgeInsets.only(left: 14.w, top: 15.h),
+                            child: ClipOval(
+                              child: Image(
+                                image: AssetImage('assets/images/6.jpeg'),
+                                height: 34.h,
+                                width: 34.h,
+                                fit: BoxFit.fill,
+                              ),
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    right: 7.w,
-                    top: 10.h,
-                    child: Image(
-                      image: AssetImage('assets/images/close.png'),
-                      height: 20.h,
-                      width: 20.h,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ],
-              ),
+                        Positioned(
+                          right: 7.w,
+                          top: 10.h,
+                          child: GestureDetector(
+                            onTap: () {
+                              _changed(false);
+                            },
+                            child: Image(
+                              image: AssetImage('assets/images/close.png'),
+                              height: 20.h,
+                              width: 20.h,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                      ],
+                    )
+                  : Container(),
               Container(
                 margin: EdgeInsets.only(top: 10.h, bottom: 60.h),
                 child: ListView.builder(
