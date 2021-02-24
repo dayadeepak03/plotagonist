@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/screenutil_init.dart';
 import 'package:plotagonist/Screen/HomeScreen.dart';
+import 'package:plotagonist/Screen/splash.dart';
 import 'package:plotagonist/Utils/styling.dart';
 
 import 'Utils/size_config.dart';
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
                   accentColor: AppTheme.appBarCoin,
                 ),
                 debugShowCheckedModeBanner: false,
-                home: HomeScreen(),
+                home: Splash(),
               );
             },
           );
