@@ -66,7 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
       }
     }
     return Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: AppTheme.appBackgroundColor,
         floatingActionButton: FloatingActionButton(
           backgroundColor: AppTheme.floatingColor,
           child: Image(

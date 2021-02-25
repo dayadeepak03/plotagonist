@@ -19,6 +19,7 @@ class AppTheme {
   static const Color notifyColor = Color(0xffC74C4D);
   static const Color txtColor = Color(0xff4C4C4C);
   static const Color txtappBar = Color(0xff007AFF);
+  static const Color blurColor = Color(0xffd4d1d1);
   static const Color txthint = Color(0xff25A2F0);
   static const Color fcolor = Color(0xff1877F1);
   static const Color tcolor = Color(0xff1CA1F1);
