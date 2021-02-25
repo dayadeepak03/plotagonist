@@ -50,10 +50,8 @@ class _SliderPageState extends State<SliderPage> {
               color: Colors.black,
               child: ClipRRect(
                 child: Center(
-                  child: Flexible(
-                    child: FlickVideoPlayer(
-                      flickManager: flickManager,
-                    ),
+                  child: FlickVideoPlayer(
+                    flickManager: flickManager,
                   ),
                 ),
               ),
