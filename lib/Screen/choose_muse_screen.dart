@@ -83,15 +83,18 @@ class _NewFormState extends State<NewForm> {
                       physics: BouncingScrollPhysics(),
                       scrollDirection: Axis.vertical,
                       itemCount: genreList.length,
+                      padding: const EdgeInsets.all(4.0),
                       itemBuilder: (context, index) {
                         GenreModels genre = genreList[index];
                         return Container(
                           decoration: BoxDecoration(
-                              color: _selectedIndex == index
-                                  ? AppTheme.selectIndex
-                                  : AppTheme.clippathColor,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(5.h))),
+                            color: _selectedIndex == index
+                                ? AppTheme.selectIndex
+                                : AppTheme.clippathColor,
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(5.h),
+                            ),
+                          ),
                           width: MediaQuery.of(context).size.width,
                           child: GridTile(
                             child: Container(
